@@ -1,9 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import {BrowserModule} from "@angular/platform-browser";
+import {NgModule} from "@angular/core";
+import {FormsModule} from "@angular/forms";
+import {HttpModule} from "@angular/http";
+import {MaterialModule} from "@angular/material";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import 'hammerjs';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from "./app.component";
 
 @NgModule({
   declarations: [
@@ -12,9 +15,12 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    BrowserAnimationsModule,
+    MaterialModule.forRoot() // TODO shift back to importing single Material Components instead of everything
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
