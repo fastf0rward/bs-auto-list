@@ -3,5 +3,17 @@
 @import '../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
 
 body {
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
+}
+
+.layout-margin-top {
+  margin-top: 1em;
+}
+
+.layout-margin-around {
+  margin: 1em;
+}
+
+.layout-padding-around {
+  padding: 1em;
 }
