@@ -1,3 +1,22 @@
-<h1>
-  {{title}}
-</h1>
+<nav md-tab-nav-bar>
+  <a md-tab-link
+     routerLink="/upload-receipt"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive">
+    1. Bon
+  </a>
+  <a md-tab-link
+     routerLink="/grocery-list"
+     routerLinkActive #rlb="routerLinkActive"
+     [active]="rlb.isActive">
+    2. Lijstje
+  </a>
+  <a md-tab-link
+     routerLink="/groceries"
+     routerLinkActive #rlc="routerLinkActive"
+     [active]="rlc.isActive">
+    3. Boodschappen
+  </a>
+</nav>
+
+<router-outlet></router-outlet>
