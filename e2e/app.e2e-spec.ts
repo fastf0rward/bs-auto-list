@@ -1,6 +1,6 @@
 import { TyAppPage } from './app.po';
 
-describe('ty-app App', () => {
+describe('bs-auto-list App', () => {
   let page: TyAppPage;
 
   beforeEach(() => {
