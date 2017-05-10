@@ -1,0 +1,13 @@
+<md-card>
+  <md-list>
+    <md-list-item *ngFor="let product of products">
+      <md-input-container floatPlaceholder="never">
+        <input mdInput type="text" placeholder="Voer een product in" value="{{product.name}}">
+      </md-input-container>
+    </md-list-item>
+  </md-list>
+
+  <div fxLayout="row" fxLayoutAlign="center center" class="layout-margin-top">
+    <button md-button md-raised-button color="primary" routerLink="/retailer-comparison">Vergelijk!</button>
+  </div>
+</md-card>
