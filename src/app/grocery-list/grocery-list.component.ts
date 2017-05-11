@@ -1,4 +1,5 @@
 import {Component, OnInit} from "@angular/core";
+import * as _ from "lodash";
 
 @Component({
   selector: 'app-grocery-list',
@@ -7,26 +8,47 @@ import {Component, OnInit} from "@angular/core";
 })
 export class GroceryListComponent implements OnInit {
   products: any[];
+  suggestions: any[];
 
   constructor() {
     this.products = this.getProducts();
+    this.suggestions = this.getSuggestions();
   }
 
   ngOnInit() {
   }
 
   private getProducts(): any[] {
-    let products = [
-      {name: 'Halfvolle yoghurt (1,5L)'},
-      {name: 'Aardappelen (1kg)'},
-      {name: 'Spinazie (400g)'},
-      {name: 'Muesli (1kg)'},
-      {name: 'Sinaasappels (1kg)'},
-      {name: 'Lays Chips Naturel'},
-      {name: 'Coca Cola (1,5L)'}
-    ];
+    let products = [];
 
     return products;
+  }
+
+  private getSuggestions(): any[] {
+    let suggestions = [
+      {name: 'Halfvolle yoghurt', quantity: '1,5L'},
+      {name: 'Aardappelen', quantity: '1kg'},
+      {name: 'Pindakaas', quantity: '400g'}
+    ];
+
+    return suggestions;
+  }
+
+  addProduct(productName: string) {
+    this.products.push({name: productName});
+  }
+
+  removeProduct(product: any) {
+    this.products = _.without(this.products, product);
+  }
+
+  acceptSuggestion(suggestion: any) {
+    this.products.push(suggestion);
+    this.suggestions = _.without(this.suggestions, suggestion);
+  }
+
+  rejectSuggestion(suggestion: any) {
+    this.suggestions = _.without(this.suggestions, suggestion);
   }
 
 }
