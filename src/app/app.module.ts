@@ -10,6 +10,7 @@ import {GroceryListComponent} from "./grocery-list/grocery-list.component";
 import {RouterModule, Routes} from "@angular/router";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {GroceryListService} from "./grocery-list/grocery-list.service";
 
 const appRoutes: Routes = [
   {path: 'grocery-list', component: GroceryListComponent},
@@ -32,7 +33,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FlexLayoutModule
   ],
-  providers: [],
+  providers: [
+    GroceryListService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

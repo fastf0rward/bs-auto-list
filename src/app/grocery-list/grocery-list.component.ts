@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import * as _ from "lodash";
+import {GroceryListService} from "./grocery-list.service";
 
 @Component({
   selector: 'app-grocery-list',
@@ -10,50 +10,18 @@ export class GroceryListComponent implements OnInit {
   products: any[];
   suggestions: any[];
 
-  constructor() {
-    this.products = this.getProducts();
-    this.suggestions = this.getSuggestions();
+  constructor(private groceryListService: GroceryListService) {
+    this.groceryListService.products.subscribe(_products => {
+      this.products = _products;
+    });
+    this.groceryListService.suggestions.subscribe(_suggestions => {
+      this.suggestions = _suggestions;
+    });
   }
 
   ngOnInit() {
   }
 
-  private getProducts(): any[] {
-    let products = [];
 
-    return products;
-  }
-
-  private getSuggestions(): any[] {
-    let suggestions = [
-      {name: 'Halfvolle yoghurt', quantity: '1,5L'},
-      {name: 'Aardappelen', quantity: '1kg'},
-      {name: 'Pindakaas', quantity: '400g'}
-    ];
-
-    return suggestions;
-  }
-
-  addProduct(productName: string) {
-    this.products.push({name: productName});
-  }
-
-  removeProduct(product: any) {
-    this.products = _.without(this.products, product);
-  }
-
-  acceptSuggestion(suggestion: any) {
-    this.products.push(suggestion);
-    this.suggestions = _.without(this.suggestions, suggestion);
-  }
-
-  acceptAllSuggestions() : void {
-    this.products = _.concat(this.suggestions, this.products);
-    this.suggestions = [];
-  }
-
-  rejectSuggestion(suggestion: any) {
-    this.suggestions = _.without(this.suggestions, suggestion);
-  }
 
 }
