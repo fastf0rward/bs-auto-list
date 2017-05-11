@@ -28,7 +28,7 @@ export class GroceryListService {
 
   removeProduct(product: any) {
     let _products = this._productsSubject.getValue();
-    _.without(_products, product);
+    _products = _.without(_products, product);
     this._productsSubject.next(_products);
   }
 
