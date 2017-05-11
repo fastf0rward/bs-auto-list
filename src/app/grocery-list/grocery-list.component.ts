@@ -10,7 +10,7 @@ export class GroceryListComponent implements OnInit {
   products: any[];
   suggestions: any[];
 
-  constructor(private groceryListService: GroceryListService) {
+  constructor(public groceryListService: GroceryListService) {
     this.groceryListService.products.subscribe(_products => {
       this.products = _products;
     });
@@ -21,7 +21,6 @@ export class GroceryListComponent implements OnInit {
 
   ngOnInit() {
   }
-
 
 
 }
