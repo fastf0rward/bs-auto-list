@@ -6,10 +6,15 @@
   color: lightgray;
 }
 
-.bg-suggestion-list .bs-accept-suggestion.mat-mini-fab {
-  background-color: rgba(123, 171, 95, 0.66);
+.bs-accept-suggestion.mat-mini-fab {
+  background-color: rgba(123, 171, 95, 0.4);
 }
 
-.bg-suggestion-list .bs-reject-suggestion.mat-mini-fab {
-  background-color: rgba(244, 67, 54, 0.66);
+.bs-reject-suggestion.mat-mini-fab {
+  background-color: rgba(244, 67, 54, 0.4);
+}
+
+.bs-list-controls {
+  height: 5em;
+  padding-right: 63px;
 }

@@ -47,6 +47,11 @@ export class GroceryListComponent implements OnInit {
     this.suggestions = _.without(this.suggestions, suggestion);
   }
 
+  acceptAllSuggestions() : void {
+    this.products = _.concat(this.suggestions, this.products);
+    this.suggestions = [];
+  }
+
   rejectSuggestion(suggestion: any) {
     this.suggestions = _.without(this.suggestions, suggestion);
   }

@@ -1,19 +1,29 @@
 <md-list class="bg-suggestion-list">
+
   <md-list-item *ngFor="let suggestion of suggestions">
     <h4 md-line>{{suggestion.name}}</h4>
     <button class="bs-accept-suggestion" md-mini-fab color="primary" (click)="acceptSuggestion(suggestion)">
       <md-icon>done</md-icon>
     </button>
-    <button class="bs-reject-suggestion layout-margin-left" md-mini-fab color="warn" (click)="rejectSuggestion(suggestion)">
+    <button class="bs-reject-suggestion layout-margin-left" md-mini-fab color="warn"
+            (click)="rejectSuggestion(suggestion)">
       <md-icon>clear</md-icon>
     </button>
   </md-list-item>
   <md-list-item *ngIf="suggestions.length === 0">
-    <p>No suggestions available</p>
+    <p>Op dit moment zijn er geen suggesties</p>
   </md-list-item>
+
 </md-list>
 
+<div *ngIf="suggestions.length > 1" class="bs-list-controls" fxLayout="row" fxLayoutAlign="end center">
+  <button class="bs-accept-suggestion" md-mini-fab color="primary" (click)="acceptAllSuggestions()">
+    <md-icon>done_all</md-icon>
+  </button>
+</div>
+
 <md-list>
+
   <md-list-item *ngFor="let product of products">
     <h4 md-line>{{product.name}}</h4>
     <button md-mini-fab color="warn" (click)="removeProduct(product)">
@@ -28,6 +38,7 @@
              placeholder="Voeg zelf een product toe">
     </md-input-container>
   </md-list-item>
+
 </md-list>
 
 <div fxLayout="row" fxLayoutAlign="center center" class="layout-margin-top">
