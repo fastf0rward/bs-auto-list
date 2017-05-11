@@ -1,13 +1,35 @@
-<md-card>
-  <md-list>
-    <md-list-item *ngFor="let product of products">
-      <md-input-container floatPlaceholder="never">
-        <input mdInput type="text" placeholder="Voer een product in" value="{{product.name}}">
-      </md-input-container>
-    </md-list-item>
-  </md-list>
+<md-list class="bg-suggestion-list">
+  <md-list-item *ngFor="let suggestion of suggestions">
+    <h4 md-line>{{suggestion.name}}</h4>
+    <button class="bs-accept-suggestion" md-mini-fab color="primary" (click)="acceptSuggestion(suggestion)">
+      <md-icon>done</md-icon>
+    </button>
+    <button class="bs-reject-suggestion layout-margin-left" md-mini-fab color="warn" (click)="rejectSuggestion(suggestion)">
+      <md-icon>clear</md-icon>
+    </button>
+  </md-list-item>
+  <md-list-item *ngIf="suggestions.length === 0">
+    <p>No suggestions available</p>
+  </md-list-item>
+</md-list>
 
-  <div fxLayout="row" fxLayoutAlign="center center" class="layout-margin-top">
-    <button md-button md-raised-button color="primary" routerLink="/retailer-comparison">Vergelijk!</button>
-  </div>
-</md-card>
+<md-list>
+  <md-list-item *ngFor="let product of products">
+    <h4 md-line>{{product.name}}</h4>
+    <button md-mini-fab color="warn" (click)="removeProduct(product)">
+      <md-icon>clear</md-icon>
+    </button>
+  </md-list-item>
+
+  <md-list-item>
+    <md-input-container floatPlaceholder="never">
+      <input #newProductName mdInput type="text"
+             (keyup.enter)="addProduct(newProductName.value); newProductName.value = ''"
+             placeholder="Voeg zelf een product toe">
+    </md-input-container>
+  </md-list-item>
+</md-list>
+
+<div fxLayout="row" fxLayoutAlign="center center" class="layout-margin-top">
+  <button md-button md-raised-button color="primary" routerLink="/retailer-comparison">Klaar!</button>
+</div>
