@@ -11,9 +11,11 @@ import {RouterModule, Routes} from "@angular/router";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {GroceryListService} from "./grocery-list/grocery-list.service";
+import {ShopComponent} from "./shop/shop.component";
 
 const appRoutes: Routes = [
   {path: 'grocery-list', component: GroceryListComponent},
+  {path: 'shop', component: ShopComponent},
   {path: '', redirectTo: '/grocery-list', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];
@@ -22,7 +24,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     GroceryListComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ShopComponent
   ],
   imports: [
     BrowserModule,

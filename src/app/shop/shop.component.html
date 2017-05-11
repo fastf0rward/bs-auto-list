@@ -1,0 +1,13 @@
+<md-card>
+  <md-list>
+
+    <md-list-item *ngFor="let product of products">
+      <h4 md-line>{{product.name}}</h4>
+    </md-list-item>
+
+    <md-list-item *ngIf="products.length === 0">
+      Je lijst is nog leeg!
+    </md-list-item>
+
+  </md-list>
+</md-card>
