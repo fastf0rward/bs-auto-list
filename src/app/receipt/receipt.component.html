@@ -1,3 +1,13 @@
-<p>
-  receipt works!
-</p>
+<div fxLayout="column" fxLayoutAlign="start stretch">
+
+  <div [hidden]="showVideo" class="layout-margin-around">
+    <video #videoplayer [width]="width" [height]="height" autoplay></video>
+    <button mdButton md-raised-button color="primary" id="snap" class="layout-margin-top" (click)="capture()">Maak Foto</button>
+  </div>
+
+  <div [hidden]="!showVideo" class="layout-margin-around">
+    <canvas #canvas [width]="width" [height]="height"></canvas>
+    <button mdButton md-raised-button color="primary" id="save" routerLink="/grocery-list" class="layout-margin-top" (click)="saveImage()">Volgende Stap</button>
+  </div>
+
+</div>

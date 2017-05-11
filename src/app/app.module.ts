@@ -13,12 +13,13 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {GroceryListService} from "./grocery-list/grocery-list.service";
 import {ShopComponent} from "./shop/shop.component";
 import {ReceiptComponent} from "./receipt/receipt.component";
+import {CameraService} from "./receipt/camera.service";
 
 const appRoutes: Routes = [
-  {path: 'receipt', component: ShopComponent},
+  {path: 'receipt', component: ReceiptComponent},
   {path: 'grocery-list', component: GroceryListComponent},
   {path: 'shop', component: ShopComponent},
-  {path: '', redirectTo: '/grocery-list', pathMatch: 'full'},
+  {path: '', redirectTo: '/receipt', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];
 
@@ -40,7 +41,8 @@ const appRoutes: Routes = [
     FlexLayoutModule
   ],
   providers: [
-    GroceryListService
+    GroceryListService,
+    CameraService
   ],
   bootstrap: [AppComponent]
 })
