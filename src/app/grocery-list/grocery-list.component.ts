@@ -19,10 +19,10 @@ export class GroceryListComponent implements OnInit {
       this.suggestions = _suggestions;
     });
 
-    // always show loader for 1.5s
+    // always show loader for 1s
     setTimeout(() => {
       this.showLoader = false
-    }, 1500);
+    }, 1000);
   }
 
   ngOnInit() {
