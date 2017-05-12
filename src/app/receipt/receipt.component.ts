@@ -13,8 +13,6 @@ export class ReceiptComponent implements OnInit, AfterViewInit {
   public showVideo: any = false;
 
   private context: any;
-  comment: string;
-  identifier: string;
   longitude: number;
   latitude: number;
   canvasWidth: number;
@@ -24,6 +22,7 @@ export class ReceiptComponent implements OnInit, AfterViewInit {
   navHeight: number;
   private constraints: any;
   private preferredDevice: string;
+  mediaDevicesSupported: boolean = true;
 
   @Input() width: number;
   @Input() height: number;
@@ -47,27 +46,22 @@ export class ReceiptComponent implements OnInit, AfterViewInit {
 
   saveImage() {
     this.showVideo = false;
-
     let imgData: any = this.canvas.nativeElement.toDataURL('img/png');
-
     imgData = imgData.replace('data:image/png;base64,', '');
+  }
 
-    let postData: any = JSON.stringify({
-      'ImageBase64String': imgData,
-      'id': 3,
-      'identifier': this.identifier,
-      'comment': this.comment,
-      'longitude': this.longitude,
-      'latitude': this.latitude
-    });
+  checkSupportMediaDevices(): boolean {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices || !navigator.mediaDevices.getUserMedia) {
+      console.log("MediaDevices API not supported.");
+      this.mediaDevicesSupported = false;
+      return false;
+    } else {
+      this.mediaDevicesSupported = true;
+      return true;
+    }
   }
 
   getPreferredDevice(): string {
-    if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
-      console.log("enumerateDevices() not supported.");
-      return;
-    }
-
     // List cameras and microphones.
     navigator.mediaDevices.enumerateDevices()
       .then(function (devices) {
@@ -79,40 +73,42 @@ export class ReceiptComponent implements OnInit, AfterViewInit {
       })
       .catch(function (err) {
         console.log(err.name + ": " + err.message);
-        return false;
+        return;
       });
+
+    return 'default';
   }
 
   ngOnInit() {
-
-    // select back camera
-    this.preferredDevice = this.getPreferredDevice();
-
-    // set camera constraints
-    this.constraints = {
-      video: {
-        optional: [{sourceId: this.preferredDevice}]
-      }
-    };
+    // revert to HTML5 input field in case MediaDevices are not supported in browser
+    if (this.checkSupportMediaDevices()) {
+      // select back camera
+      this.preferredDevice = this.getPreferredDevice();
+      // set camera constraints
+      this.constraints = {
+        video: {
+          optional: [{sourceId: this.preferredDevice}]
+        }
+      };
+    }
 
     this.width = 500 / 240 * 320;
     this.height = 500;
     this.canvasWidth = 240;
     this.canvasHeight = 464;
-
     this.navHeight = 57;
-
     this.canvasOffsetLeft = 0.5 * this.width - 0.5 * this.canvasWidth;
     this.canvasOffsetTop = (this.height - this.canvasHeight) * 0.5;
   }
 
   ngAfterViewInit() {
-    // Get current geolocation
+    // get current geolocation
     //this.getGeolocation();
 
-    this.context = this.canvas.nativeElement.getContext('2d');
+    // only connect camera if supported
+    if (this.mediaDevicesSupported) {
+      this.context = this.canvas.nativeElement.getContext('2d');
 
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       navigator.mediaDevices.getUserMedia(this.constraints)
         .then(stream => {
           this.videoPlayer.nativeElement.src = window.URL.createObjectURL(stream);

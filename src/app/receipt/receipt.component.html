@@ -1,4 +1,4 @@
-<div fxLayout="column" fxLayoutAlign="start stretch">
+<div *ngIf="mediaDevicesSupported" fxLayout="column" fxLayoutAlign="start stretch">
 
   <div [hidden]="showVideo" class="layout-margin-around" class="bs-video-container">
 
@@ -24,15 +24,22 @@
       <canvas #canvas [width]="canvasWidth" [height]="canvasHeight"></canvas>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="space-around center">
-      <button mdButton md-raised-button color="accent" id="start-over" class="layout-margin-top" (click)="showVideo = !showVideo">
+    <div fxLayout="row" fxLayoutAlign="space-around center" class="layout-margin-top">
+      <button mdButton md-raised-button color="accent" id="start-over" (click)="showVideo = !showVideo">
         <md-icon>autorenew</md-icon>
       </button>
-      <button mdButton md-raised-button color="primary" id="save" routerLink="/grocery-list" class="layout-margin-top"
-              (click)="saveImage()">Volgende Stap
+      <button mdButton md-raised-button color="primary" id="save" routerLink="/grocery-list" (click)="saveImage()">
+        Volgende Stap
       </button>
     </div>
 
   </div>
 
+</div>
+
+<div *ngIf="!mediaDevicesSupported" fxLayout="column" fxLayoutAlign="center center" class="layout-margin-top">
+  <button mdButton md-raised-button color="primary" id="camera" class="layout-margin-top"
+          (click)="uploadButton.click()">Maak Foto
+  </button>
+  <input #uploadButton hidden type="file" accept="image/*" id="capture" capture="camera">
 </div>
