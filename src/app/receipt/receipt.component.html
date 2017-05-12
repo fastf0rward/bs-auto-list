@@ -1,13 +1,38 @@
 <div fxLayout="column" fxLayoutAlign="start stretch">
 
-  <div [hidden]="showVideo" class="layout-margin-around">
-    <video #videoplayer [width]="width" [height]="height" autoplay></video>
-    <button mdButton md-raised-button color="primary" id="snap" class="layout-margin-top" (click)="capture()">Maak Foto</button>
+  <div [hidden]="showVideo" class="layout-margin-around" class="bs-video-container">
+
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div class="bs-camera" [ngStyle]="{'width.px': width, 'height.px': height}">
+        <video #videoplayer [width]="width" [height]="height" autoplay></video>
+        <div class="bs-photo-area"
+             [ngStyle]="{'top.px': canvasOffsetTop + navHeight, 'margin-left.px' : canvasOffsetLeft, 'width.px': canvasWidth, 'height.px': canvasHeight}"></div>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <button mdButton md-raised-button color="primary" id="snap" class="layout-margin-top" (click)="capture()">Maak
+        Foto
+      </button>
+    </div>
+
   </div>
 
   <div [hidden]="!showVideo" class="layout-margin-around">
-    <canvas #canvas [width]="width" [height]="height"></canvas>
-    <button mdButton md-raised-button color="primary" id="save" routerLink="/grocery-list" class="layout-margin-top" (click)="saveImage()">Volgende Stap</button>
+
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <canvas #canvas [width]="canvasWidth" [height]="canvasHeight"></canvas>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+      <button mdButton md-raised-button color="accent" id="start-over" class="layout-margin-top" (click)="showVideo = !showVideo">
+        <md-icon>autorenew</md-icon>
+      </button>
+      <button mdButton md-raised-button color="primary" id="save" routerLink="/grocery-list" class="layout-margin-top"
+              (click)="saveImage()">Volgende Stap
+      </button>
+    </div>
+
   </div>
 
 </div>

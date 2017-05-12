@@ -1,0 +1,12 @@
+video {
+  object-fit: cover;
+  object-position: center;
+}
+.bs-camera {
+  //overflow: hidden;
+}
+
+.bs-photo-area {
+  position: absolute;
+  border: 2px dashed white;
+}
