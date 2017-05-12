@@ -1,46 +1,56 @@
-<md-list class="bg-suggestion-list">
-
-  <md-list-item *ngFor="let suggestion of suggestions">
-    <h4 md-line>{{suggestion.name}}</h4>
-    <button class="bs-accept-suggestion" md-mini-fab color="primary" (click)="groceryListService.acceptSuggestion(suggestion)">
-      <md-icon>done</md-icon>
-    </button>
-    <button class="bs-reject-suggestion layout-margin-left" md-mini-fab color="warn"
-            (click)="groceryListService.rejectSuggestion(suggestion)">
-      <md-icon>clear</md-icon>
-    </button>
-  </md-list-item>
-  <md-list-item *ngIf="suggestions.length === 0">
-    <p>Op dit moment zijn er geen suggesties</p>
-  </md-list-item>
-
-</md-list>
-
-<div *ngIf="suggestions.length > 1" class="bs-list-controls" fxLayout="row" fxLayoutAlign="end center">
-  <button class="bs-accept-suggestion" md-mini-fab color="primary" (click)="groceryListService.acceptAllSuggestions()">
-    <md-icon>done_all</md-icon>
-  </button>
+<div fxLayout="row" fxLayoutAlign="center center" class="layout-margin-top">
+  <md-progress-spinner *ngIf="showLoader" mode="indeterminate"></md-progress-spinner>
 </div>
 
-<md-list>
+<div *ngIf="!showLoader">
 
-  <md-list-item *ngFor="let product of products">
-    <h4 md-line>{{product.name}}</h4>
-    <button md-mini-fab color="warn" (click)="groceryListService.removeProduct(product)">
-      <md-icon>clear</md-icon>
+  <md-list class="bg-suggestion-list">
+
+    <md-list-item *ngFor="let suggestion of suggestions">
+      <h4 md-line>{{suggestion.name}}</h4>
+      <button class="bs-accept-suggestion" md-mini-fab color="primary"
+              (click)="groceryListService.acceptSuggestion(suggestion)">
+        <md-icon>done</md-icon>
+      </button>
+      <button class="bs-reject-suggestion layout-margin-left" md-mini-fab color="warn"
+              (click)="groceryListService.rejectSuggestion(suggestion)">
+        <md-icon>clear</md-icon>
+      </button>
+    </md-list-item>
+    <md-list-item *ngIf="suggestions.length === 0">
+      <p>Op dit moment zijn er geen suggesties</p>
+    </md-list-item>
+
+  </md-list>
+
+  <div *ngIf="suggestions.length > 1" class="bs-list-controls" fxLayout="row" fxLayoutAlign="end center">
+    <button class="bs-accept-suggestion" md-mini-fab color="primary"
+            (click)="groceryListService.acceptAllSuggestions()">
+      <md-icon>done_all</md-icon>
     </button>
-  </md-list-item>
+  </div>
 
-  <md-list-item>
-    <md-input-container floatPlaceholder="never">
-      <input #newProductName mdInput type="text"
-             (keyup.enter)="groceryListService.addProduct(newProductName.value); newProductName.value = ''"
-             placeholder="Voeg zelf een product toe">
-    </md-input-container>
-  </md-list-item>
+  <md-list>
 
-</md-list>
+    <md-list-item *ngFor="let product of products">
+      <h4 md-line>{{product.name}}</h4>
+      <button md-mini-fab color="warn" (click)="groceryListService.removeProduct(product)">
+        <md-icon>clear</md-icon>
+      </button>
+    </md-list-item>
 
-<div fxLayout="row" fxLayoutAlign="center center" class="layout-margin-top">
-  <button md-button md-raised-button color="primary" routerLink="/shop">Klaar!</button>
+    <md-list-item>
+      <md-input-container floatPlaceholder="never">
+        <input #newProductName mdInput type="text"
+               (keyup.enter)="groceryListService.addProduct(newProductName.value); newProductName.value = ''"
+               placeholder="Voeg zelf een product toe">
+      </md-input-container>
+    </md-list-item>
+
+  </md-list>
+
+  <div fxLayout="row" fxLayoutAlign="center center" class="layout-margin-top">
+    <button md-button md-raised-button color="primary" routerLink="/shop">Klaar!</button>
+  </div>
+
 </div>

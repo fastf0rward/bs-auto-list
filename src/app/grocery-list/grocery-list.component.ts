@@ -9,6 +9,7 @@ import {GroceryListService} from "./grocery-list.service";
 export class GroceryListComponent implements OnInit {
   products: any[];
   suggestions: any[];
+  showLoader: boolean = true;
 
   constructor(public groceryListService: GroceryListService) {
     this.groceryListService.products.subscribe(_products => {
@@ -17,6 +18,11 @@ export class GroceryListComponent implements OnInit {
     this.groceryListService.suggestions.subscribe(_suggestions => {
       this.suggestions = _suggestions;
     });
+
+    // always show loader for 1.5s
+    setTimeout(() => {
+      this.showLoader = false
+    }, 1500);
   }
 
   ngOnInit() {
