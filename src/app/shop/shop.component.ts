@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {GroceryListService} from "../grocery-list/grocery-list.service";
+import * as _ from "lodash";
 
 @Component({
   selector: 'app-shop',
@@ -12,7 +13,7 @@ export class ShopComponent implements OnInit {
 
   constructor(private groceryListService: GroceryListService) {
     groceryListService.products.subscribe(_products => {
-      this.products = _products;
+      this.products = _.filter(_products, {accepted: true});
     });
   }
 
