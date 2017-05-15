@@ -52,13 +52,13 @@ export class ReceiptComponent implements OnInit, AfterViewInit {
 
   checkSupportMediaDevices(): boolean {
     if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices || !navigator.mediaDevices.getUserMedia) {
-      console.log("MediaDevices API not supported.");
+      console.log("Latest MediaDevices API not supported.");
       this.mediaDevicesSupported = false;
-      return false;
     } else {
       this.mediaDevicesSupported = true;
-      return true;
     }
+
+    return this.mediaDevicesSupported;
   }
 
   getPreferredDevice(): string {
