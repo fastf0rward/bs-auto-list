@@ -38,8 +38,8 @@
 </div>
 
 <div *ngIf="!mediaDevicesSupported" fxLayout="column" fxLayoutAlign="center center" class="layout-margin-top">
-  <button mdButton md-raised-button color="primary" id="camera" class="layout-margin-top"
-          (click)="uploadButton.click()">Maak Foto
+  <button md-fab color="primary" (click)="uploadButton.click()" class="layout-margin-top">
+    <md-icon>camera_alt</md-icon>
   </button>
   <input #uploadButton hidden type="file" accept="image/*" id="capture" capture="camera">
 </div>
