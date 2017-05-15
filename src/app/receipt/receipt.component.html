@@ -1,3 +1,4 @@
+<!-- NEW MEDIADEVICES WAY OF UPLOADING IMAGE -->
 <div *ngIf="mediaDevicesSupported" fxLayout="column" fxLayoutAlign="start stretch">
 
   <div [hidden]="showVideo" class="layout-margin-around" class="bs-video-container">
@@ -28,7 +29,7 @@
       <button mdButton md-raised-button color="accent" id="start-over" (click)="showVideo = !showVideo">
         <md-icon>autorenew</md-icon>
       </button>
-      <button mdButton md-raised-button color="primary" id="save" routerLink="/grocery-list" (click)="saveImage()">
+      <button mdButton md-raised-button color="primary" id="next-new" routerLink="/grocery-list" (click)="saveImage()">
         Volgende Stap
       </button>
     </div>
@@ -37,9 +38,14 @@
 
 </div>
 
+<!-- OLD INPUT FILE METHOD OF UPLOADING IMAGE -->
 <div *ngIf="!mediaDevicesSupported" fxLayout="column" fxLayoutAlign="center center" class="layout-margin-top">
   <button md-fab color="primary" (click)="uploadButton.click()" class="layout-margin-top">
     <md-icon>camera_alt</md-icon>
   </button>
   <input #uploadButton hidden type="file" accept="image/*" id="capture" capture="camera">
+
+  <button *ngIf="picture" mdButton md-raised-button color="primary" id="next-old" routerLink="/grocery-list">
+    Volgende Stap
+  </button>
 </div>
