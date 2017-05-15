@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {GroceryListService} from "./grocery-list.service";
+import * as _ from "lodash";
 
 @Component({
   selector: 'app-grocery-list',
@@ -9,20 +10,16 @@ import {GroceryListService} from "./grocery-list.service";
 export class GroceryListComponent implements OnInit {
   products: any[];
   suggestions: any[];
-  showLoader: boolean = true;
+  showLoader: boolean;
 
   constructor(public groceryListService: GroceryListService) {
     this.groceryListService.products.subscribe(_products => {
       this.products = _products;
+      this.suggestions = _.filter(_products, {suggested: true, accepted: false});
     });
-    this.groceryListService.suggestions.subscribe(_suggestions => {
-      this.suggestions = _suggestions;
+    this.groceryListService.showLoader.subscribe(_show => {
+      this.showLoader = _show;
     });
-
-    // always show loader for 1s
-    setTimeout(() => {
-      this.showLoader = false
-    }, 1000);
   }
 
   ngOnInit() {

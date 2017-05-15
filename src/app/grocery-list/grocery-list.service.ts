@@ -8,21 +8,32 @@ export class GroceryListService {
   private _productsSubject = new BehaviorSubject([]);
   products = this._productsSubject.asObservable();
 
-  private _suggestionsSubject = new BehaviorSubject([]);
-  suggestions = this._suggestionsSubject.asObservable();
+  private _showLoaderSubject = new BehaviorSubject(true);
+  showLoader = this._showLoaderSubject.asObservable();
 
   constructor() {
     let mockSuggestions = [
-      {name: 'Halfvolle yoghurt', quantity: '1,5L'},
-      {name: 'Aardappelen', quantity: '1kg'},
-      {name: 'Pindakaas', quantity: '400g'}
+      {name: 'Knorr Mix', quantity: '100g', bought: 'vandaag', suggested: true, accepted: false},
+      {name: 'Aardappelen', quantity: '1kg', bought: '3 dagen geleden', suggested: true, accepted: false},
+      {name: 'Gehakt', quantity: '400g', bought: '1 week geleden', suggested: true, accepted: false},
+      {name: 'Pindakaas', quantity: '400g', bought: '3 weken geleden', suggested: true, accepted: false},
     ];
-    this._suggestionsSubject.next(mockSuggestions);
+    this._productsSubject.next(mockSuggestions);
+
+    // only show loader on first load
+    setTimeout(() => {
+      this._showLoaderSubject.next(false);
+    }, 1000);
   }
 
   addProduct(productName: string) {
     let _products = this._productsSubject.getValue();
-    _products.push({name: productName});
+    let _prod = {
+      name: productName,
+      suggested: false,
+      accepted: true
+    };
+    _products.push(_prod);
     this._productsSubject.next(_products);
   }
 
@@ -33,30 +44,31 @@ export class GroceryListService {
   }
 
   acceptSuggestion(suggestion: any) {
-    let _suggestions = this._suggestionsSubject.getValue();
     let _products = this._productsSubject.getValue();
+    _products.forEach(_prod => {
+      if (_prod.name === suggestion.name) {
+        _prod.accepted = true;
+      }
+    });
 
-    _products.push(suggestion);
     this._productsSubject.next(_products);
-    _suggestions = _.without(_suggestions, suggestion);
-    this._suggestionsSubject.next(_suggestions);
   }
 
   acceptAllSuggestions(): void {
-    let _suggestions = this._suggestionsSubject.getValue();
     let _products = this._productsSubject.getValue();
-
-    _products = _.concat(_products, _suggestions);
+    _products.forEach(_prod => {
+      if (_prod.suggested) {
+        _prod.accepted = true;
+      }
+    });
     this._productsSubject.next(_products);
-    _suggestions = [];
-    this._suggestionsSubject.next(_suggestions);
   }
 
   rejectSuggestion(suggestion: any) {
-    let _suggestions = this._suggestionsSubject.getValue();
-    _suggestions = _.without(_suggestions, suggestion);
+    let _products = this._productsSubject.getValue();
+    _products = _.without(_products, suggestion);
 
-    this._suggestionsSubject.next(_suggestions);
+    this._productsSubject.next(_products);
   }
 
 }

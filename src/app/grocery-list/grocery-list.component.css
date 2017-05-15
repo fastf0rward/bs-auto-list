@@ -1,8 +1,4 @@
-.bg-suggestion-list {
-  color: gray;
-}
-
-.bg-suggestion-list .mat-list-item {
+.bs-suggestion.mat-list-item {
   color: lightgray;
 }
 
@@ -16,5 +12,9 @@
 
 .bs-list-controls {
   height: 5em;
-  padding-right: 63px;
+  padding-right: 8px;
+}
+
+.bs-suggestion-list .bs-suggestion-caption {
+
 }
