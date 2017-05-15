@@ -41,15 +41,15 @@
 <!-- OLD INPUT FILE METHOD OF UPLOADING IMAGE -->
 <div *ngIf="!mediaDevicesSupported" fxLayout="column" fxLayoutAlign="center center" class="layout-margin-top">
 
-  <img *ngIf="imagePreviewUrl" [src]="imagePreviewUrl" height="350">
+  <img *ngIf="receiptPreviewUrl" [src]="receiptPreviewUrl" height="350">
 
   <button md-fab color="primary" (click)="uploadButton.click()" class="layout-margin-top">
     <md-icon>camera_alt</md-icon>
   </button>
 
-  <input #uploadButton (change)="updateInput($event)" hidden type="file" accept="image/*" id="capture" capture="camera">
+  <input #uploadButton (change)="receiptService.updateReceiptPreview($event)" hidden type="file" accept="image/*" id="capture" capture="camera">
 
-  <button *ngIf="imagePreviewUrl" mdButton md-raised-button color="accent" id="next-old" routerLink="/grocery-list"
+  <button *ngIf="receiptPreviewUrl" mdButton md-raised-button color="accent" id="next-old" routerLink="/grocery-list"
           class="layout-margin-top">
     Volgende Stap
   </button>

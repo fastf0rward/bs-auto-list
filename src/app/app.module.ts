@@ -14,6 +14,7 @@ import {GroceryListService} from "./grocery-list/grocery-list.service";
 import {ShopComponent} from "./shop/shop.component";
 import {ReceiptComponent} from "./receipt/receipt.component";
 import {CameraService} from "./receipt/camera.service";
+import {ReceiptService} from "./receipt/receipt.service";
 
 const appRoutes: Routes = [
   {path: 'receipt', component: ReceiptComponent},
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     GroceryListService,
-    CameraService
+    CameraService,
+    ReceiptService
   ],
   bootstrap: [AppComponent]
 })
