@@ -6,6 +6,10 @@
   background-color: rgba(123, 171, 95, 0.4);
 }
 
+.bs-accept-all-suggestion.mat-mini-fab {
+  margin-right: 46px;
+}
+
 .bs-reject-suggestion.mat-mini-fab {
   background-color: rgba(244, 67, 54, 0.4);
 }

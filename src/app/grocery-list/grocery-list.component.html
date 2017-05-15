@@ -31,16 +31,21 @@
 
     <md-list-item>
 
+      <h4 md-line></h4>
+      <button fxFlexAlign="flex-start" *ngIf="suggestions.length > 1" class="bs-accept-suggestion bs-accept-all-suggestion" md-mini-fab color="primary"
+              (click)="groceryListService.acceptAllSuggestions()">
+        <md-icon>done_all</md-icon>
+      </button>
+
+    </md-list-item>
+
+    <md-list-item class="bs-add-product-row">
+
       <md-input-container floatPlaceholder="never">
         <input #newProductName mdInput type="text"
                (keyup.enter)="groceryListService.addProduct(newProductName.value); newProductName.value = ''"
                placeholder="Voeg iets toe">
       </md-input-container>
-
-      <button fxFlexOffset="74px" *ngIf="suggestions.length > 1" class="bs-accept-suggestion" md-mini-fab color="primary"
-              (click)="groceryListService.acceptAllSuggestions()">
-        <md-icon>done_all</md-icon>
-      </button>
 
     </md-list-item>
 
