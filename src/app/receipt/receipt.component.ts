@@ -1,5 +1,6 @@
 import {Component, OnInit, AfterViewInit, ViewChild, Input} from "@angular/core";
 import {CameraService} from "./camera.service";
+import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-receipt',
@@ -27,7 +28,9 @@ export class ReceiptComponent implements OnInit, AfterViewInit {
   @Input() width: number;
   @Input() height: number;
 
-  constructor(private cameraService: CameraService) {
+  imagePreviewUrl: SafeUrl;
+
+  constructor(private cameraService: CameraService, private sanitizer: DomSanitizer) {
   }
 
   capture() {
@@ -77,6 +80,13 @@ export class ReceiptComponent implements OnInit, AfterViewInit {
       });
 
     return 'default';
+  }
+
+  updateInput(_event) {
+    if (_event.srcElement.files && _event.srcElement.files[0]) {
+      var file = _event.srcElement.files[0];
+      this.imagePreviewUrl = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(file));
+    }
   }
 
   ngOnInit() {
