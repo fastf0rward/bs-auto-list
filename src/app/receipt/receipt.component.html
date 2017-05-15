@@ -41,7 +41,7 @@
 <!-- OLD INPUT FILE METHOD OF UPLOADING IMAGE -->
 <div *ngIf="!mediaDevicesSupported" fxLayout="column" fxLayoutAlign="center center" class="layout-margin-top">
 
-  <img *ngIf="imagePreviewUrl" [src]="imagePreviewUrl" height="400">
+  <img *ngIf="imagePreviewUrl" [src]="imagePreviewUrl" height="350">
 
   <button md-fab color="primary" (click)="uploadButton.click()" class="layout-margin-top">
     <md-icon>camera_alt</md-icon>
