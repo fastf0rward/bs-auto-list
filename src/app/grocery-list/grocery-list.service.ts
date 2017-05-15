@@ -27,6 +27,9 @@ export class GroceryListService {
   }
 
   addProduct(productName: string) {
+    if (productName.length === 0) {
+      return;
+    }
     let _products = this._productsSubject.getValue();
     let _prod = {
       name: productName,
