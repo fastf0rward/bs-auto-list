@@ -6,7 +6,8 @@
 
   <md-list>
 
-    <md-list-item [ngClass]="{'bs-suggestion': product.suggested && !product.accepted}" *ngFor="let product of products">
+    <md-list-item [ngClass]="{'bs-suggestion': product.suggested && !product.accepted}"
+                  *ngFor="let product of products">
 
       <h4 md-line>{{product.name}}</h4>
       <p *ngIf="product.bought" class="bs-product-caption" md-line>{{product.bought}}</p>
@@ -21,6 +22,11 @@
         <md-icon>clear</md-icon>
       </button>
 
+      <button *ngIf="product.accepted" class="bs-remove-product layout-margin-left"
+              (click)="groceryListService.removeProduct(product)" md-mini-fab>
+        <md-icon>clear</md-icon>
+      </button>
+
     </md-list-item>
 
     <md-list-item>
@@ -31,14 +37,20 @@
                placeholder="Voeg iets toe">
       </md-input-container>
 
+      <button fxFlexOffset="74px" *ngIf="suggestions.length > 1" class="bs-accept-suggestion" md-mini-fab color="primary"
+              (click)="groceryListService.acceptAllSuggestions()">
+        <md-icon>done_all</md-icon>
+      </button>
+
     </md-list-item>
 
   </md-list>
 
-  <div *ngIf="suggestions.length > 1" class="bs-list-controls" fxLayout="row" fxLayoutAlign="space-around center">
-    <button md-button md-raised-button color="primary" (click)="groceryListService.addProduct(newProductName.value); newProductName.value = ''" [disabled]="newProductName.length > 0">Voeg Toe</button>
-    <button class="bs-accept-suggestion" md-mini-fab color="primary" (click)="groceryListService.acceptAllSuggestions()">
-      <md-icon>done_all</md-icon>
+  <div class="bs-list-controls" fxLayout="row" fxLayoutAlign="start center">
+    <button md-button md-raised-button color="primary"
+            (click)="groceryListService.addProduct(newProductName.value); newProductName.value = ''"
+            [disabled]="newProductName.length > 0">
+      Voeg Toe
     </button>
   </div>
 
