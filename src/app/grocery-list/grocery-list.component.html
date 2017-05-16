@@ -2,7 +2,11 @@
   <md-progress-spinner *ngIf="showLoader" mode="indeterminate"></md-progress-spinner>
 </div>
 
-<div *ngIf="!showLoader">
+<div fxLayout="column" *ngIf="!showLoader">
+
+  <p class="bs-intro-caption">
+    Accepteer suggesties en voeg zelf boodschappen toe.
+  </p>
 
   <md-list>
 
@@ -32,7 +36,8 @@
     <md-list-item>
 
       <h4 md-line></h4>
-      <button fxFlexAlign="flex-start" *ngIf="suggestions.length > 1" class="bs-accept-suggestion bs-accept-all-suggestion" md-mini-fab color="primary"
+      <button fxFlexAlign="flex-start" *ngIf="suggestions.length > 1"
+              class="bs-accept-suggestion bs-accept-all-suggestion" md-mini-fab color="primary"
               (click)="groceryListService.acceptAllSuggestions()">
         <md-icon>done_all</md-icon>
       </button>

@@ -25,3 +25,8 @@ body {
 .layout-padding-around {
   padding: 1em;
 }
+
+.bs-intro-caption {
+  text-align: center;
+  font-size: 14px;
+}
