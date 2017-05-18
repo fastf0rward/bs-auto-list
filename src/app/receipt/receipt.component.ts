@@ -10,13 +10,6 @@ import {ReceiptService} from "./receipt.service";
 })
 export class ReceiptComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('videoplayer') videoPlayer: any;
-  @ViewChild('canvas') canvas: any;
-  public showVideo: any = false;
-
-  private context: any;
-  longitude: number;
-  latitude: number;
   canvasWidth: number;
   canvasHeight: number;
   canvasOffsetLeft: number;
@@ -30,30 +23,10 @@ export class ReceiptComponent implements OnInit, AfterViewInit {
   @Input() width: number;
   @Input() height: number;
 
-  constructor(private cameraService: CameraService, private receiptService: ReceiptService) {
+  constructor(private receiptService: ReceiptService) {
     this.receiptService.receiptPreview.subscribe(_receipt => {
       this.receiptPreviewUrl = _receipt;
     })
-  }
-
-  capture() {
-    this.context.drawImage(this.videoPlayer.nativeElement, this.canvasOffsetLeft, this.canvasOffsetTop, this.canvasWidth, this.canvasHeight, 0, 0, this.canvasWidth, this.canvasHeight);
-    this.showVideo = true;
-  }
-
-  getGeolocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(x => {
-        this.longitude = x.coords.longitude;
-        this.latitude = x.coords.latitude;
-      });
-    }
-  }
-
-  saveImage() {
-    this.showVideo = false;
-    let imgData: any = this.canvas.nativeElement.toDataURL('img/png');
-    imgData = imgData.replace('data:image/png;base64,', '');
   }
 
   checkSupportMediaDevices(): boolean {
@@ -108,19 +81,8 @@ export class ReceiptComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // get current geolocation
-    //this.getGeolocation();
 
-    // only connect camera if supported
-    if (this.mediaDevicesSupported) {
-      this.context = this.canvas.nativeElement.getContext('2d');
 
-      navigator.mediaDevices.getUserMedia(this.constraints)
-        .then(stream => {
-          this.videoPlayer.nativeElement.src = window.URL.createObjectURL(stream);
-          this.videoPlayer.nativeElement.play();
-        });
-    }
   }
 
 }
