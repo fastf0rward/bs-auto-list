@@ -8,7 +8,7 @@ export class GroceryListService {
   private _productsSubject = new BehaviorSubject([]);
   products = this._productsSubject.asObservable();
 
-  private _showLoaderSubject = new BehaviorSubject(true);
+  _showLoaderSubject = new BehaviorSubject(true);
   showLoader = this._showLoaderSubject.asObservable();
 
   constructor() {
@@ -19,11 +19,6 @@ export class GroceryListService {
       {name: 'Pindakaas', quantity: '400g', bought: '3 weken geleden', suggested: true, accepted: false},
     ];
     this._productsSubject.next(mockSuggestions);
-
-    // only show loader on first load
-    setTimeout(() => {
-      this._showLoaderSubject.next(false);
-    }, 1000);
   }
 
   addProduct(productName: string) {
