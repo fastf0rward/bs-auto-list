@@ -1,5 +1,4 @@
-import {Component, OnInit, AfterViewInit, ViewChild, Input} from "@angular/core";
-import {CameraService} from "./camera.service";
+import {Component, OnInit, AfterViewInit, ViewChild, Input, ElementRef} from "@angular/core";
 import {SafeUrl} from "@angular/platform-browser";
 import {ReceiptService} from "./receipt.service";
 
@@ -23,10 +22,12 @@ export class ReceiptComponent implements OnInit, AfterViewInit {
   @Input() width: number;
   @Input() height: number;
 
+  @ViewChild('uploadButton') uploadButton: ElementRef;
+
   constructor(private receiptService: ReceiptService) {
     this.receiptService.receiptPreview.subscribe(_receipt => {
       this.receiptPreviewUrl = _receipt;
-    })
+    });
   }
 
   checkSupportMediaDevices(): boolean {
@@ -81,8 +82,7 @@ export class ReceiptComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-
-
+    this.uploadButton.nativeElement.click();
   }
 
 }
