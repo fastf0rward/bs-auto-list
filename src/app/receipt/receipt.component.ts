@@ -1,6 +1,8 @@
 import {Component, OnInit, AfterViewInit, ViewChild, Input, ElementRef} from "@angular/core";
 import {SafeUrl} from "@angular/platform-browser";
 import {ReceiptService} from "./receipt.service";
+import {MdDialog} from "@angular/material";
+import {ReceiptExplanationDialogComponent} from "./receipt-explanation-dialog.component";
 
 @Component({
   selector: 'app-receipt',
@@ -24,7 +26,7 @@ export class ReceiptComponent implements OnInit, AfterViewInit {
 
   @ViewChild('uploadButton') uploadButton: ElementRef;
 
-  constructor(private receiptService: ReceiptService) {
+  constructor(private receiptService: ReceiptService, private dialog: MdDialog) {
     this.receiptService.receiptPreview.subscribe(_receipt => {
       this.receiptPreviewUrl = _receipt;
     });
@@ -82,7 +84,11 @@ export class ReceiptComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.uploadButton.nativeElement.click();
+    let dialogRef = this.dialog.open(ReceiptExplanationDialogComponent);
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.uploadButton.nativeElement.click();
+    });
   }
 
 }
