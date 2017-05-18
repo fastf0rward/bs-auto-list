@@ -2,46 +2,6 @@
   Maak een foto van je boodschappenbon.
 </p>
 
-<!-- NEW MEDIADEVICES WAY OF UPLOADING IMAGE -->
-<div *ngIf="mediaDevicesSupported" fxLayout="column" fxLayoutAlign="start stretch">
-
-  <div [hidden]="showVideo" class="layout-margin-around" class="bs-video-container">
-
-    <div fxLayout="row" fxLayoutAlign="center center">
-      <div class="bs-camera" [ngStyle]="{'width.px': width, 'height.px': height}">
-        <video #videoplayer [width]="width" [height]="height" autoplay></video>
-        <div class="bs-photo-area"
-             [ngStyle]="{'top.px': canvasOffsetTop + navHeight, 'margin-left.px' : canvasOffsetLeft, 'width.px': canvasWidth, 'height.px': canvasHeight}"></div>
-      </div>
-    </div>
-
-    <div fxLayout="row" fxLayoutAlign="center center">
-      <button mdButton md-raised-button color="primary" id="snap" class="layout-margin-top" (click)="capture()">Maak
-        Foto
-      </button>
-    </div>
-
-  </div>
-
-  <div [hidden]="!showVideo" class="layout-margin-around">
-
-    <div fxLayout="row" fxLayoutAlign="center center">
-      <canvas #canvas [width]="canvasWidth" [height]="canvasHeight"></canvas>
-    </div>
-
-    <div fxLayout="row" fxLayoutAlign="space-around center" class="layout-margin-top">
-      <button mdButton md-raised-button color="accent" id="start-over" (click)="showVideo = !showVideo">
-        <md-icon>autorenew</md-icon>
-      </button>
-      <button mdButton md-raised-button color="primary" id="next-new" routerLink="/grocery-list" (click)="saveImage()">
-        Volgende Stap
-      </button>
-    </div>
-
-  </div>
-
-</div>
-
 <!-- OLD INPUT FILE METHOD OF UPLOADING IMAGE -->
 <div *ngIf="!mediaDevicesSupported" fxLayout="column" fxLayoutAlign="center center" class="layout-margin-top">
 
