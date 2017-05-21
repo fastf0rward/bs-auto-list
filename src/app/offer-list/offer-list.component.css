@@ -1,0 +1,28 @@
+.bs-suggestion.mat-list-item {
+  color: lightgray;
+}
+
+.bs-accept-suggestion.mat-mini-fab {
+  background-color: rgba(123, 171, 95, 0.4);
+}
+
+.bs-accept-all-suggestion.mat-mini-fab {
+  margin-right: 46px;
+}
+
+.bs-reject-suggestion.mat-mini-fab {
+  background-color: rgba(244, 67, 54, 0.4);
+}
+
+.bs-remove-product.mat-mini-fab {
+  color: white;
+  background-color: rgba(211, 211, 211, 0.65);
+}
+
+.bs-list-controls {
+  margin-left: 20px;
+}
+
+.bs-suggestion-list .bs-suggestion-caption {
+
+}
