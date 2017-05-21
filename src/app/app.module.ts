@@ -17,11 +17,15 @@ import {CameraService} from "./receipt/camera.service";
 import {ReceiptService} from "./receipt/receipt.service";
 import {ReceiptExplanationDialogComponent} from "./receipt/receipt-explanation-dialog.component";
 import {GroceryListExplanationDialogComponent} from "./grocery-list/grocery-list-explanation-dialog.component";
-import { ShopExplanationDialogComponent } from './shop/shop-explanation-dialog.component';
+import {ShopExplanationDialogComponent} from "./shop/shop-explanation-dialog.component";
+import {OfferListExplanationDialogComponent} from "./offer-list/offer-list-explanation-dialog.component";
+import {OfferListComponent} from "./offer-list/offer-list.component";
+import {OfferListService} from "./offer-list/offer-list.service";
 
 const appRoutes: Routes = [
   {path: 'receipt', component: ReceiptComponent},
   {path: 'grocery-list', component: GroceryListComponent},
+  {path: 'offer-list', component: OfferListComponent},
   {path: 'shop', component: ShopComponent},
   {path: '', redirectTo: '/receipt', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
@@ -31,16 +35,19 @@ const appRoutes: Routes = [
   entryComponents: [
     ReceiptExplanationDialogComponent,
     GroceryListExplanationDialogComponent,
+    OfferListExplanationDialogComponent,
     ShopExplanationDialogComponent
   ],
   declarations: [
     AppComponent,
     GroceryListComponent,
+    OfferListComponent,
     PageNotFoundComponent,
     ShopComponent,
     ReceiptComponent,
     ReceiptExplanationDialogComponent,
     GroceryListExplanationDialogComponent,
+    OfferListExplanationDialogComponent,
     ShopExplanationDialogComponent
   ],
   imports: [
@@ -54,6 +61,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     GroceryListService,
+    OfferListService,
     CameraService,
     ReceiptService
   ],
