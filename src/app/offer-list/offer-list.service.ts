@@ -3,7 +3,7 @@ import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import * as _ from "lodash";
 
 @Injectable()
-export class GroceryListService {
+export class OfferListService {
 
   private _productsSubject = new BehaviorSubject([]);
   products = this._productsSubject.asObservable();
@@ -13,10 +13,10 @@ export class GroceryListService {
 
   constructor() {
     let mockSuggestions = [
-      {name: 'Knorr Mix', quantity: '100g', bought: 'vandaag', suggested: true, accepted: false},
-      {name: 'Aardappelen', quantity: '1kg', bought: '3 dagen geleden', suggested: true, accepted: false},
-      {name: 'Gehakt', quantity: '400g', bought: '1 week geleden', suggested: true, accepted: false},
-      {name: 'Pindakaas', quantity: '400g', bought: '3 weken geleden', suggested: true, accepted: false},
+      {name: 'Knorr Mix', quantity: '100g', bought: 'vandaag', shopLogo: 'ah_logo', discount: 50, suggested: true, accepted: false},
+      {name: 'Aardappelen', quantity: '1kg', bought: '3 dagen geleden', shopLogo: 'ah_logo', discount: 35, suggested: true, accepted: false},
+      {name: 'Gehakt', quantity: '400g', bought: '1 week geleden', shopLogo: 'jumbo_logo', discount: 35, suggested: true, accepted: false},
+      {name: 'Pindakaas', quantity: '400g', bought: '3 weken geleden', shopLogo: 'ah_logo', discount: 50, suggested: true, accepted: false},
     ];
     this._productsSubject.next(mockSuggestions);
   }

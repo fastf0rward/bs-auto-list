@@ -6,10 +6,6 @@
   background-color: rgba(123, 171, 95, 0.4);
 }
 
-.bs-accept-all-suggestion.mat-mini-fab {
-  margin-right: 46px;
-}
-
 .bs-reject-suggestion.mat-mini-fab {
   background-color: rgba(244, 67, 54, 0.4);
 }
@@ -25,4 +21,23 @@
 
 .bs-suggestion-list .bs-suggestion-caption {
 
+}
+
+.mat-chip {
+  min-width: 35px;
+  text-align: center;
+  background-color: #ff7373;
+  color: white;
+  margin-right: 1em !important;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.mat-icon.bs-shop-logo {
+  width: auto;
+  max-height: 25px;
+}
+
+.bs-ready-button .mat-button {
+  background-color: #ff7373;
 }
