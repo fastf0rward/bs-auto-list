@@ -1,21 +1,23 @@
-<p class="bs-intro-caption">
-  Vink snel en gemakkelijk boodschappen van je lijst.
-</p>
+<div *ngIf="showGroceryList">
+  <p class="bs-intro-caption">
+    Vink snel en gemakkelijk boodschappen van je lijst.
+  </p>
 
-<md-card>
-  <md-list>
+  <md-card>
+    <md-list>
 
-    <md-list-item *ngFor="let product of products">
-      <md-checkbox><h4 md-line>{{product.name}}</h4></md-checkbox>
-    </md-list-item>
+      <md-list-item *ngFor="let product of products">
+        <md-checkbox><h4 md-line>{{product.name}}</h4></md-checkbox>
+      </md-list-item>
 
-    <md-list-item *ngIf="products.length === 0">
-      Je lijst is nog leeg!
-    </md-list-item>
+      <md-list-item *ngIf="products.length === 0">
+        Je lijst is nog leeg!
+      </md-list-item>
 
-  </md-list>
-</md-card>
+    </md-list>
+  </md-card>
 
-<div fxLayout="row" fxLayoutAlign="center center" class="layout-margin-top">
-  <button md-button md-raised-button color="accent" routerLink="/grocery-list">Naar je lijst</button>
+  <div fxLayout="row" fxLayoutAlign="center center" class="layout-margin-top">
+    <button md-button md-raised-button color="accent" routerLink="/grocery-list">Naar je lijst</button>
+  </div>
 </div>

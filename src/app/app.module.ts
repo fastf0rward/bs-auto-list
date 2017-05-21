@@ -17,6 +17,7 @@ import {CameraService} from "./receipt/camera.service";
 import {ReceiptService} from "./receipt/receipt.service";
 import {ReceiptExplanationDialogComponent} from "./receipt/receipt-explanation-dialog.component";
 import {GroceryListExplanationDialogComponent} from "./grocery-list/grocery-list-explanation-dialog.component";
+import { ShopExplanationDialogComponent } from './shop/shop-explanation-dialog.component';
 
 const appRoutes: Routes = [
   {path: 'receipt', component: ReceiptComponent},
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
 @NgModule({
   entryComponents: [
     ReceiptExplanationDialogComponent,
-    GroceryListExplanationDialogComponent
+    GroceryListExplanationDialogComponent,
+    ShopExplanationDialogComponent
   ],
   declarations: [
     AppComponent,
@@ -38,7 +40,8 @@ const appRoutes: Routes = [
     ShopComponent,
     ReceiptComponent,
     ReceiptExplanationDialogComponent,
-    GroceryListExplanationDialogComponent
+    GroceryListExplanationDialogComponent,
+    ShopExplanationDialogComponent
   ],
   imports: [
     BrowserModule,

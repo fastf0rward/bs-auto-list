@@ -26,10 +26,11 @@ export class ReceiptComponent implements OnInit, AfterViewInit {
 
   @ViewChild('uploadButton') uploadButton: ElementRef;
 
-  constructor(private receiptService: ReceiptService, private dialog: MdDialog) {
+  constructor(public receiptService: ReceiptService, private dialog: MdDialog) {
     this.receiptService.receiptPreview.subscribe(_receipt => {
       this.receiptPreviewUrl = _receipt;
     });
+    this.receiptService._receiptPreview.next('');
   }
 
   checkSupportMediaDevices(): boolean {

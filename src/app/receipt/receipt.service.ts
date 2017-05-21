@@ -6,7 +6,7 @@ import {BehaviorSubject} from "rxjs";
 export class ReceiptService {
 
   private defaultUrl: SafeUrl = '';
-  private _receiptPreview = new BehaviorSubject(this.defaultUrl);
+  _receiptPreview = new BehaviorSubject(this.defaultUrl);
   receiptPreview = this._receiptPreview.asObservable();
 
   constructor(private sanitizer: DomSanitizer) { }
