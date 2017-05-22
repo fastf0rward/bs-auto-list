@@ -1,5 +1,5 @@
-.bs-suggestion.mat-list-item {
-  color: lightgray;
+md-list-item.bs-suggestion {
+  opacity: 0.5;
 }
 
 .bs-accept-suggestion.mat-mini-fab {
