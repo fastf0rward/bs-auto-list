@@ -14,7 +14,7 @@
                   *ngFor="let product of products">
 
       <h4 md-line>{{product.name}}</h4>
-      <p *ngIf="product.bought" class="bs-product-caption" md-line>{{product.bought}}</p>
+      <p *ngIf="product.type" class="bs-product-caption" md-line>{{product.type}}</p>
 
       <md-icon class="bs-shop-logo layout-margin-right" svgIcon="{{product.shopLogo}}"></md-icon>
 

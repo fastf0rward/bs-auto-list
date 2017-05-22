@@ -13,10 +13,10 @@ export class OfferListService {
 
   constructor() {
     let mockSuggestions = [
-      {name: 'Knorr Mix', quantity: '100g', bought: 'vandaag', shopLogo: 'ah_logo', discount: 50, suggested: true, accepted: false},
-      {name: 'Aardappelen', quantity: '1kg', bought: '3 dagen geleden', shopLogo: 'ah_logo', discount: 35, suggested: true, accepted: false},
-      {name: 'Gehakt', quantity: '400g', bought: '1 week geleden', shopLogo: 'jumbo_logo', discount: 35, suggested: true, accepted: false},
-      {name: 'Pindakaas', quantity: '400g', bought: '3 weken geleden', shopLogo: 'ah_logo', discount: 50, suggested: true, accepted: false},
+      {name: 'Knorr Mix', quantity: '100g', type: '2=1', shopLogo: 'ah_logo', discount: 50, suggested: true, accepted: false},
+      {name: 'Aardappelen', quantity: '1kg', type: '', shopLogo: 'ah_logo', discount: 35, suggested: true, accepted: false},
+      {name: 'Gehakt', quantity: '400g', type: '', shopLogo: 'jumbo_logo', discount: 35, suggested: true, accepted: false},
+      {name: 'Pindakaas', quantity: '400g', type: '2=1', shopLogo: 'ah_logo', discount: 50, suggested: true, accepted: false},
     ];
     this._productsSubject.next(mockSuggestions);
   }
