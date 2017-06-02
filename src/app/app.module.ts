@@ -21,6 +21,9 @@ import {ShopExplanationDialogComponent} from "./shop/shop-explanation-dialog.com
 import {OfferListExplanationDialogComponent} from "./offer-list/offer-list-explanation-dialog.component";
 import {OfferListComponent} from "./offer-list/offer-list.component";
 import {OfferListService} from "./offer-list/offer-list.service";
+import {AngularFireModule} from "angularfire2";
+import {environment} from "../environments/environment";
+import {AngularFireDatabaseModule} from "angularfire2/database/database.module";
 
 const appRoutes: Routes = [
   {path: 'receipt', component: ReceiptComponent},
@@ -57,7 +60,9 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MaterialModule.forRoot(), // TODO shift back to importing single Material Components instead of everything
     RouterModule.forRoot(appRoutes),
-    FlexLayoutModule
+    FlexLayoutModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
   providers: [
     GroceryListService,
