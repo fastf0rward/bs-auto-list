@@ -9,7 +9,7 @@
 
   <input #uploadButton (change)="receiptService.updateReceiptPreview($event)" hidden type="file" accept="image/*" id="capture" capture="camera">
 
-  <button *ngIf="receiptPreviewUrl" mdButton md-raised-button color="accent" id="next-old" routerLink="/offer-list"
+  <button *ngIf="receiptPreviewUrl" mdButton md-raised-button color="accent" id="next-old" routerLink="/grocery-list"
           class="layout-margin-top">
     Volgende Stap
   </button>
