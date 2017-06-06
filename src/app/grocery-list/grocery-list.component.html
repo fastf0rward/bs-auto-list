@@ -10,23 +10,23 @@
 
   <md-list>
 
-    <md-list-item [ngClass]="{'bs-suggestion': product.suggested && !product.accepted}"
+    <md-list-item [ngClass]="{'bs-suggestion': product.suggested && product.status != 'accepted'}"
                   *ngFor="let product of products">
 
       <h4 md-line>{{product.name}}</h4>
       <p *ngIf="product.bought" class="bs-product-caption" md-line>{{product.bought}}</p>
 
-      <button *ngIf="product.suggested && !product.accepted" class="bs-accept-suggestion" md-mini-fab color="primary"
+      <button *ngIf="product.suggested && product.status != 'accepted'" class="bs-accept-suggestion" md-mini-fab color="primary"
               (click)="groceryListService.acceptSuggestion(product)">
         <md-icon>done</md-icon>
       </button>
-      <button *ngIf="product.suggested && !product.accepted" class="bs-reject-suggestion layout-margin-left" md-mini-fab
+      <button *ngIf="product.suggested " class="bs-reject-suggestion layout-margin-left" md-mini-fab
               color="warn"
               (click)="groceryListService.rejectSuggestion(product)">
         <md-icon>clear</md-icon>
       </button>
 
-      <button *ngIf="product.accepted" class="bs-remove-product layout-margin-left"
+      <button *ngIf="!product.suggested" class="bs-remove-product layout-margin-left"
               (click)="groceryListService.removeProduct(product)" md-mini-fab>
         <md-icon>clear</md-icon>
       </button>
