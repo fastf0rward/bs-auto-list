@@ -30,7 +30,7 @@ const appRoutes: Routes = [
   {path: 'grocery-list', component: GroceryListComponent},
   {path: 'offer-list', component: OfferListComponent},
   {path: 'shop', component: ShopComponent},
-  {path: '', redirectTo: '/receipt', pathMatch: 'full'},
+  {path: '', redirectTo: '/grocery-list', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];
 
