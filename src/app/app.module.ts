@@ -24,6 +24,8 @@ import {OfferListService} from "./offer-list/offer-list.service";
 import {AngularFireModule} from "angularfire2";
 import {environment} from "../environments/environment";
 import {AngularFireDatabaseModule} from "angularfire2/database/database.module";
+import {AngularFireDatabase} from "angularfire2/database/database";
+import {AngularFireAuth} from "angularfire2/auth/auth";
 
 const appRoutes: Routes = [
   {path: 'receipt', component: ReceiptComponent},
@@ -68,7 +70,9 @@ const appRoutes: Routes = [
     GroceryListService,
     OfferListService,
     CameraService,
-    ReceiptService
+    ReceiptService,
+    AngularFireAuth,
+    AngularFireDatabase
   ],
   bootstrap: [AppComponent]
 })
