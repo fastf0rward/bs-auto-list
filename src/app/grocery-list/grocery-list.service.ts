@@ -1,30 +1,27 @@
 import {Injectable} from "@angular/core";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
-import {FirebaseListObservable} from "angularfire2/database/firebase_list_observable";
 import {AngularFireAuth} from "angularfire2/auth/auth";
 import {AngularFireDatabase} from "angularfire2/database/database";
+import {Subject} from "rxjs";
 
 @Injectable()
 export class GroceryListService {
 
-  _showLoaderSubject = new BehaviorSubject(false);
+  _showLoaderSubject = new BehaviorSubject(true);
   showLoader = this._showLoaderSubject.asObservable();
-  products: FirebaseListObservable<any[]>;
-  private userIdSubject = new BehaviorSubject(undefined);
-  userId = this.userIdSubject.asObservable();
+  products: any;
+  private _userIdSubject = new Subject();
+  userId = this._userIdSubject.asObservable();
 
   constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase) {
     this.userId.subscribe(_id => {
-      if (_id) {
-        this.afAuth.auth.signInAnonymously();
-        this.products = af.list('/users/' + _id + '/suggestions');
-        // TODO loader
-      }
+      this.afAuth.auth.signInAnonymously();
+      this.products = af.list('/users/' + _id + '/suggestions');
     });
   }
 
   setUserId(userId: string) {
-    this.userIdSubject.next(userId);
+    this._userIdSubject.next(userId);
   }
 
   addProduct(productName: string) {
@@ -34,7 +31,7 @@ export class GroceryListService {
     let _prod = {
       name: productName,
       status: 'created',
-      created: new Date().toDateString()
+      created: new Date().toISOString()
     };
     this.products.push(_prod);
   }

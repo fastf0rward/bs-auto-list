@@ -14,10 +14,6 @@ export class GroceryListComponent implements OnInit {
   showLoader: boolean;
 
   constructor(public groceryListService: GroceryListService, private route: ActivatedRoute, private router: Router) {
-    this.groceryListService.products.subscribe(_products => {
-      this.products = _products;
-      this.suggestions = _.filter(_products, {accepted: false});
-    });
     this.groceryListService.showLoader.subscribe(_show => {
       this.showLoader = _show;
     });
@@ -28,7 +24,11 @@ export class GroceryListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.groceryListService.products.subscribe(_products => {
+      this.products = _products;
+      this.suggestions = _.filter(_products, {accepted: false});
+      this.groceryListService._showLoaderSubject.next(false);
+    });
   }
-
 
 }
