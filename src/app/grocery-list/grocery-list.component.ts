@@ -25,7 +25,9 @@ export class GroceryListComponent implements OnInit {
 
   ngOnInit() {
     this.groceryListService.products.subscribe(_products => {
-      this.products = _products;
+      this.products = _.filter(_products, function (_prod) {
+        return _prod['status'] != 'rejected';
+      });
       this.suggestions = _.filter(_products, {accepted: false});
       this.groceryListService._showLoaderSubject.next(false);
     });
