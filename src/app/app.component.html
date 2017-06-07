@@ -1,18 +1,16 @@
-<!--
 <nav md-tab-nav-bar fxLayout="row" fxLayoutAlign="space-around center">
   <a md-tab-link
-     routerLink="/grocery-list"
+     routerLink="/grocery-list/{{userId}}"
      routerLinkActive #rlb="routerLinkActive"
      [active]="rlb.isActive">
-    2. <md-icon>list</md-icon> Lijstje
+    1. <md-icon>list</md-icon> Voorstel
   </a>
   <a md-tab-link
      routerLink="/shop"
      routerLinkActive #rlc="routerLinkActive"
      [active]="rlc.isActive">
-    3. <md-icon>shopping_cart</md-icon> Winkel
+    2. <md-icon>shopping_cart</md-icon> Definitief
   </a>
 </nav>
--->
 
 <router-outlet></router-outlet>

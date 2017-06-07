@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {GroceryListService} from "./grocery-list/grocery-list.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  userId: string;
+
+  constructor(private groceryListService: GroceryListService) {
+    this.groceryListService.userId.subscribe(_id => {
+      this.userId = _id;
+    });
+  }
 }
