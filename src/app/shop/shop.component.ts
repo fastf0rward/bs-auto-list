@@ -3,6 +3,7 @@ import {GroceryListService} from "../grocery-list/grocery-list.service";
 import * as _ from "lodash";
 import {ShopExplanationDialogComponent} from "./shop-explanation-dialog.component";
 import {MdDialog} from "@angular/material";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-shop',
@@ -28,6 +29,10 @@ export class ShopComponent implements OnInit {
     dialogRef.afterClosed().subscribe(() => {
       this.showGroceryList = true;
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }
