@@ -15,9 +15,11 @@ export class ShopComponent implements OnInit {
   products: any[];
   showGroceryList: boolean = false;
 
-  constructor(private groceryListService: GroceryListService, private dialog: MdDialog) {
+  constructor(private groceryListService: GroceryListService, private dialog: MdDialog, private location: Location) {
     groceryListService.products.subscribe(_products => {
-      this.products = _.filter(_products, {accepted: true});
+      this.products = _.filter(_products, function (_prod) {
+        return _prod['status'] == 'accepted' || _prod['status'] == 'created';
+      });
     });
 
     // reset grocery list visibility
