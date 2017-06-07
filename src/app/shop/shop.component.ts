@@ -13,7 +13,6 @@ import {Location} from "@angular/common";
 export class ShopComponent implements OnInit {
 
   products: any[];
-  showGroceryList: boolean = false;
 
   constructor(private groceryListService: GroceryListService, private dialog: MdDialog, private location: Location) {
     groceryListService.products.subscribe(_products => {
@@ -21,15 +20,11 @@ export class ShopComponent implements OnInit {
         return _prod['status'] == 'accepted' || _prod['status'] == 'created';
       });
     });
-
-    // reset grocery list visibility
-    this.showGroceryList = false;
   }
 
   ngOnInit() {
     let dialogRef = this.dialog.open(ShopExplanationDialogComponent);
     dialogRef.afterClosed().subscribe(() => {
-      this.showGroceryList = true;
     });
   }
 
