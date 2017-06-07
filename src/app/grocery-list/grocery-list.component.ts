@@ -1,7 +1,9 @@
 import {Component, OnInit} from "@angular/core";
 import {GroceryListService} from "./grocery-list.service";
 import * as _ from "lodash";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
+import {GroceryListExplanationDialogComponent} from "./grocery-list-explanation-dialog.component";
+import {MdDialog} from "@angular/material";
 
 @Component({
   selector: 'app-grocery-list',
@@ -13,7 +15,7 @@ export class GroceryListComponent implements OnInit {
   suggestions: any[] = [];
   showLoader: boolean;
 
-  constructor(public groceryListService: GroceryListService, private route: ActivatedRoute, private router: Router) {
+  constructor(public groceryListService: GroceryListService, private route: ActivatedRoute, private dialog: MdDialog) {
     this.groceryListService.showLoader.subscribe(_show => {
       this.showLoader = _show;
     });
@@ -29,6 +31,11 @@ export class GroceryListComponent implements OnInit {
         return _prod['status'] != 'rejected';
       });
       this.suggestions = _.filter(_products, {accepted: false});
+      this.groceryListService._showLoaderSubject.next(false);
+    });
+
+    let dialogRef = this.dialog.open(GroceryListExplanationDialogComponent);
+    dialogRef.afterClosed().subscribe(() => {
       this.groceryListService._showLoaderSubject.next(false);
     });
   }
