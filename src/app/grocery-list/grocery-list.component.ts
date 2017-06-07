@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {GroceryListService} from "./grocery-list.service";
 import * as _ from "lodash";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-grocery-list',
@@ -12,13 +13,17 @@ export class GroceryListComponent implements OnInit {
   suggestions: any[] = [];
   showLoader: boolean;
 
-  constructor(public groceryListService: GroceryListService) {
+  constructor(public groceryListService: GroceryListService, private route: ActivatedRoute, private router: Router) {
     this.groceryListService.products.subscribe(_products => {
       this.products = _products;
       this.suggestions = _.filter(_products, {accepted: false});
     });
     this.groceryListService.showLoader.subscribe(_show => {
       this.showLoader = _show;
+    });
+    this.route.params.subscribe(_params => {
+      let _userId = _params['user_id'];
+      this.groceryListService.setUserId(_userId);
     });
   }
 

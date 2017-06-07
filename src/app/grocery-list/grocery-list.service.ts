@@ -9,12 +9,22 @@ export class GroceryListService {
 
   _showLoaderSubject = new BehaviorSubject(false);
   showLoader = this._showLoaderSubject.asObservable();
-
   products: FirebaseListObservable<any[]>;
+  private userIdSubject = new BehaviorSubject(undefined);
+  userId = this.userIdSubject.asObservable();
 
   constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase) {
-    this.afAuth.auth.signInAnonymously();
-    this.products = af.list('/users/3bjh23b5jh2v35jhg23j5/suggestions'); // TODO dynamic user ID
+    this.userId.subscribe(_id => {
+      if (_id) {
+        this.afAuth.auth.signInAnonymously();
+        this.products = af.list('/users/' + _id + '/suggestions');
+        // TODO loader
+      }
+    });
+  }
+
+  setUserId(userId: string) {
+    this.userIdSubject.next(userId);
   }
 
   addProduct(productName: string) {
@@ -24,8 +34,8 @@ export class GroceryListService {
     let _prod = {
       name: productName,
       status: 'created',
-      created: new Date()
-  };
+      created: new Date().toDateString()
+    };
     this.products.push(_prod);
   }
 

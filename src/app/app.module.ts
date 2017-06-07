@@ -29,7 +29,7 @@ import {AngularFireAuth} from "angularfire2/auth/auth";
 
 const appRoutes: Routes = [
   {path: 'receipt', component: ReceiptComponent},
-  {path: 'grocery-list', component: GroceryListComponent},
+  {path: 'grocery-list/:user_id', component: GroceryListComponent},
   {path: 'offer-list', component: OfferListComponent},
   {path: 'shop', component: ShopComponent},
   {path: '', redirectTo: '/grocery-list', pathMatch: 'full'},
