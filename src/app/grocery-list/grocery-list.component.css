@@ -14,6 +14,7 @@
   background-color: rgba(244, 67, 54, 0.4);
 }
 
+.bs-accepted .bs-reject-suggestion.mat-mini-fab,
 .bs-remove-product.mat-mini-fab {
   color: white;
   background-color: rgba(211, 211, 211, 0.65);

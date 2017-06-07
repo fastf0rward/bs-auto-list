@@ -10,7 +10,7 @@
 
   <md-list>
 
-    <md-list-item [ngClass]="{'bs-suggestion': product.suggested && product.status != 'accepted'}"
+    <md-list-item [ngClass]="{'bs-suggestion': product.suggested && product.status != 'accepted', 'bs-accepted': product.status == 'accepted'}"
                   *ngFor="let product of products">
 
       <h4 md-line>{{product.name}}</h4>
