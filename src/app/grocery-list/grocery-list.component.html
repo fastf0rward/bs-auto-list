@@ -20,7 +20,7 @@
               (click)="groceryListService.acceptSuggestion(product)">
         <md-icon>done</md-icon>
       </button>
-      <button *ngIf="product.suggested " class="bs-reject-suggestion layout-margin-left" md-mini-fab
+      <button *ngIf="product.suggested && product.status != 'rejected'" class="bs-reject-suggestion layout-margin-left" md-mini-fab
               color="warn"
               (click)="groceryListService.rejectSuggestion(product)">
         <md-icon>clear</md-icon>
