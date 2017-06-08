@@ -21,10 +21,22 @@ export class ShopComponent implements OnInit {
     let dialogRef = this.dialog.open(ShopExplanationDialogComponent);
     dialogRef.afterClosed().subscribe(() => {
     });
+
+    this.groceryListService.products.subscribe(_products => {
+      this.products = _.filter(_products, function (_prod) {
+        return _prod['status'] == 'accepted' || _prod['status'] == 'created';
+      });
+    });
   }
 
   goBack() {
     this.location.back();
+  }
+
+  checkProduct(_product) {
+    _product.checked = !_product.checked;
+    console.log(_product);
+    this.groceryListService.updateProduct(_product);
   }
 
 }
