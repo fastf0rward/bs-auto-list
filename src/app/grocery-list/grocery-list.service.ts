@@ -65,4 +65,8 @@ export class GroceryListService {
     this.products.update(rejectedProduct.$key, rejectedProduct);
   }
 
+  updateProduct(product: any) {
+    this.products.update(product.$key, product);
+  }
+
 }
