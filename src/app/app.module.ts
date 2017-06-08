@@ -29,6 +29,7 @@ import {AngularFireAuth} from "angularfire2/auth/auth";
 import {AdminComponent} from "./admin/admin.component";
 import {AdminAuthComponent} from "./admin-auth/admin-auth.component";
 import {AdminDataService} from "./admin/admin-data.service";
+import { EditUserComponent } from './admin/edit-user/edit-user.component';
 
 const appRoutes: Routes = [
   {path: 'receipt', component: ReceiptComponent},
@@ -37,6 +38,7 @@ const appRoutes: Routes = [
   {path: 'shop', component: ShopComponent},
   {path: 'admin-auth', component: AdminAuthComponent},
   {path: 'admin', component: AdminComponent},
+  {path: 'admin/users/:user_id', component: EditUserComponent},
   {path: '', redirectTo: '/grocery-list', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];
@@ -60,7 +62,8 @@ const appRoutes: Routes = [
     OfferListExplanationDialogComponent,
     ShopExplanationDialogComponent,
     AdminComponent,
-    AdminAuthComponent
+    AdminAuthComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
