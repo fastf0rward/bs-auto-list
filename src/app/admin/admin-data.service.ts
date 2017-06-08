@@ -53,6 +53,15 @@ export class AdminDataService {
     this.currentSuggestions.push(newSuggestion);
   }
 
+  addBatchSuggestions(_batchStr: string) {
+    if (_batchStr) {
+      let _split: string[] = _batchStr.split('\n');
+      _split.forEach(_name => {
+        this.addSuggestion(_name);
+      });
+    }
+  }
+
   removeSuggestion(_key) {
     if (_key) {
       this.currentSuggestions.remove(_key);

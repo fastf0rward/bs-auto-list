@@ -9,8 +9,12 @@
     </button>
   </md-list-item>
 </md-list>
-<div fxLayout="column" fxLayoutAlign="center start" class="layout-margin-around">
+<div fxLayout="column" fxLayoutAlign="start stretch" class="layout-margin-around">
   <md-input-container>
     <input mdInput #name (keyup.enter)="adminData.addSuggestion(name.value); name.value = ''" placeholder="nieuwe suggestie...">
   </md-input-container>
+  <md-input-container>
+    <textarea mdInput #batchNames placeholder="nieuwe batch (gescheiden met komma's)..."></textarea>
+  </md-input-container>
+  <button md-raised-button (click)="adminData.addBatchSuggestions(batchNames.value); batchNames.value = ''">Verwerk batch</button>
 </div>
