@@ -1,4 +1,4 @@
-<nav md-tab-nav-bar fxLayout="row" fxLayoutAlign="space-around center">
+<nav md-tab-nav-bar *ngIf="isUserView" fxLayout="row" fxLayoutAlign="space-around center">
   <a md-tab-link
      routerLink="/grocery-list/{{userId}}"
      routerLinkActive #rlb="routerLinkActive"
