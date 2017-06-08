@@ -45,12 +45,14 @@ export class AdminDataService {
   }
 
   addSuggestion(_name) {
-    let newSuggestion = {
-      dateCreated: new Date().toISOString(),
-      name: _name,
-      suggested: true
-    };
-    this.currentSuggestions.push(newSuggestion);
+    if (_name) {
+      let newSuggestion = {
+        dateCreated: new Date().toISOString(),
+        name: _name,
+        suggested: true
+      };
+      this.currentSuggestions.push(newSuggestion);
+    }
   }
 
   addBatchSuggestions(_batchStr: string) {
