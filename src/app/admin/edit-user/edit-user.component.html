@@ -1,3 +1,15 @@
-<p>
-  edit-user works!
-</p>
+<div>
+  <md-card>
+    <md-card-header>
+      <md-icon md-card-avatar>face</md-icon>
+      <md-card-title>{{user.$key}}</md-card-title>
+      <md-card-subtitle>toegevoegd op {{user.dateCreated | date}}</md-card-subtitle>
+    </md-card-header>
+    <md-card-content>
+      <md-input-container class="bs-full-width">
+        <input mdInput type="email" placeholder="{{user.email}}" [(ngModel)]="user.email" (keyup.enter)="adminData.updateUser(user)">
+      </md-input-container>
+      <button md-button (click)="adminData.updateUser(user)">save</button>
+    </md-card-content>
+  </md-card>
+</div>

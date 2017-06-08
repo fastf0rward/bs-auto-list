@@ -6,8 +6,9 @@ import {AngularFireAuth} from "angularfire2/auth/auth";
 export class AdminDataService {
 
   data: any;
+  currentUser: any;
 
-  constructor(af: AngularFireDatabase, afAuth: AngularFireAuth) {
+  constructor(private af: AngularFireDatabase, private afAuth: AngularFireAuth) {
     afAuth.authState.subscribe((_isAuth) => {
       if (_isAuth) {
         this.data = af.list('/users', {
@@ -26,6 +27,14 @@ export class AdminDataService {
       suggestions: [],
     };
     this.data.push(newUser);
+  }
+
+  updateUser(_user) {
+    this.data.update(_user.$key, _user);
+  }
+
+  setCurrentUser(_userId: string) {
+    this.currentUser = this.af.object('users/' + _userId);
   }
 
 }
