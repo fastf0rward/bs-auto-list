@@ -29,8 +29,9 @@ import {AngularFireAuth} from "angularfire2/auth/auth";
 import {AdminComponent} from "./admin/admin.component";
 import {AdminAuthComponent} from "./admin-auth/admin-auth.component";
 import {AdminDataService} from "./admin/admin-data.service";
-import { EditUserComponent } from './admin/edit-user/edit-user.component';
-import { EditUserSuggestionsComponent } from './admin/edit-user-suggestions/edit-user-suggestions.component';
+import {EditUserComponent} from "./admin/edit-user/edit-user.component";
+import {EditUserSuggestionsComponent} from "./admin/edit-user-suggestions/edit-user-suggestions.component";
+import {ClipboardModule} from "ngx-clipboard";
 
 const appRoutes: Routes = [
   {path: 'receipt', component: ReceiptComponent},
@@ -78,7 +79,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    ClipboardModule
   ],
   providers: [
     GroceryListService,

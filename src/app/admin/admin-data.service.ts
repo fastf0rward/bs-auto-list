@@ -69,4 +69,8 @@ export class AdminDataService {
     }
   }
 
+  getUserUrl(_key) {
+    return window.location.hostname + '/grocery-list/' + _key;
+  }
+
 }

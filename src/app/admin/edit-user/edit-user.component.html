@@ -25,4 +25,16 @@
     </md-card-content>
   </md-card>
 
+  <md-card class="layout-margin-top">
+    <md-card-header>
+      <md-icon md-card-avatar>link</md-icon>
+      <md-card-title>LINK</md-card-title>
+      <md-card-subtitle>link voor de gebruiker</md-card-subtitle>
+    </md-card-header>
+    <md-card-content>
+      <input class="bs-be-gone" type="text" #userUrl value="{{adminData.getUserUrl(user.$key)}}">
+      <button md-raised-button [ngxClipboard]="userUrl"><md-icon>link</md-icon> kopieer link</button>
+    </md-card-content>
+  </md-card>
+
 </div>

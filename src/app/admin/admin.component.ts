@@ -12,7 +12,7 @@ export class AdminComponent implements OnInit {
 
   users: any[];
 
-  constructor(private afAuth: AngularFireAuth, private router: Router, private adminData: AdminDataService) {
+  constructor(private afAuth: AngularFireAuth, private router: Router, public adminData: AdminDataService) {
     afAuth.authState.subscribe((_isAuth) => {
       if (!_isAuth) {
         router.navigate(['/admin-auth']);
