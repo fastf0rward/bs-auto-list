@@ -35,7 +35,7 @@ export class GroceryListService {
     let _prod = {
       name: productName,
       status: 'created',
-      created: new Date().toISOString()
+      dateCreated: new Date().toISOString()
     };
     this.products.push(_prod);
   }
