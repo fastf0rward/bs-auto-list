@@ -3,7 +3,7 @@
   <md-list-item *ngFor="let suggestion of suggestions">
     <md-icon md-list-icon>redeem</md-icon>
     <h4 md-line>{{suggestion.name}}</h4>
-    <p md-line>toegevoegd op {{suggestion.dateCreated | date: 'short'}} </p>
+    <p md-line class="bs-subtle-text">toegevoegd op {{suggestion.dateCreated | date: 'short'}} </p>
     <button (click)="adminData.removeSuggestion(suggestion)" md-icon-button>
       <md-icon>remove_circle</md-icon>
     </button>
