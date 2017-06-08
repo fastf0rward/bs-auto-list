@@ -12,14 +12,9 @@ import {Location} from "@angular/common";
 })
 export class ShopComponent implements OnInit {
 
-  products: any[];
+  products: any[] = [];
 
   constructor(private groceryListService: GroceryListService, private dialog: MdDialog, private location: Location) {
-    groceryListService.products.subscribe(_products => {
-      this.products = _.filter(_products, function (_prod) {
-        return _prod['status'] == 'accepted' || _prod['status'] == 'created';
-      });
-    });
   }
 
   ngOnInit() {
