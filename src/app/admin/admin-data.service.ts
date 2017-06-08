@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {AngularFireDatabase} from "angularfire2/database/database";
 import {AngularFireAuth} from "angularfire2/auth/auth";
 import {Router} from "@angular/router";
+import {Http} from "@angular/http";
 
 @Injectable()
 export class AdminDataService {
@@ -11,7 +12,9 @@ export class AdminDataService {
   currentSuggestions: any;
   goBackLink: string;
 
-  constructor(private af: AngularFireDatabase, private afAuth: AngularFireAuth, private router: Router) {
+  private shortifyEndpoint = 'http://shortify.site/api/url/shorten/?url=';
+
+  constructor(private af: AngularFireDatabase, private afAuth: AngularFireAuth, private router: Router, private http: Http) {
     afAuth.authState.subscribe((_isAuth) => {
       if (_isAuth) {
         this.data = af.list('/users', {
@@ -81,7 +84,13 @@ export class AdminDataService {
   }
 
   getUserUrl(_key) {
-    return window.location.hostname + '/grocery-list/' + _key;
+    let userUrl = window.location.hostname + '/grocery-list/' + _key;
+
+    return this.http.get(this.shortifyEndpoint + userUrl)
+      .map(_data => {
+        let _url = _data['_body'].substr(2);
+        return _url || userUrl;
+      });
   }
 
 }

@@ -21,7 +21,7 @@
       <md-card-subtitle>klik om te bewerken</md-card-subtitle>
     </md-card-header>
     <md-card-content>
-      <button md-raised-button color="primary" routerLink="suggestions">Bewerken</button>
+      <button md-raised-button color="primary" routerLink="suggestions"><md-icon></md-icon>Bewerken</button>
     </md-card-content>
   </md-card>
 
@@ -32,7 +32,7 @@
       <md-card-subtitle>link voor de gebruiker</md-card-subtitle>
     </md-card-header>
     <md-card-content>
-      <input class="bs-be-gone" type="text" #userUrl value="{{adminData.getUserUrl(user.$key)}}">
+      <input class="bs-be-gone" type="text" #userUrl value="{{user.url}}">
       <button md-raised-button [ngxClipboard]="userUrl"><md-icon>link</md-icon> kopieer link</button>
     </md-card-content>
   </md-card>

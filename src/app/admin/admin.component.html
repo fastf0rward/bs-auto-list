@@ -4,7 +4,7 @@
     <md-icon md-list-icon>face</md-icon>
     <h4 md-line routerLink="users/{{user.$key}}">{{user.email}}</h4>
     <p class="bs-subtle-text" md-line routerLink="users/{{user.$key}}">toegevoegd op {{user.dateCreated | date: 'short'}} </p>
-    <input class="bs-be-gone" type="text" #userUrl value="{{adminData.getUserUrl(user.$key)}}">
+    <input class="bs-be-gone" type="text" #userUrl value="{{user.url}}">
     <md-icon [ngxClipboard]="userUrl">link</md-icon>
     <button routerLink="users/{{user.$key}}" md-icon-button>
       <md-icon>info</md-icon>
