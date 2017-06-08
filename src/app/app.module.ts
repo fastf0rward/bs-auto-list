@@ -1,6 +1,6 @@
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {MaterialModule} from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -26,12 +26,16 @@ import {environment} from "../environments/environment";
 import {AngularFireDatabaseModule} from "angularfire2/database/database.module";
 import {AngularFireDatabase} from "angularfire2/database/database";
 import {AngularFireAuth} from "angularfire2/auth/auth";
+import {AdminComponent} from "./admin/admin.component";
+import {AdminAuthComponent} from "./admin-auth/admin-auth.component";
 
 const appRoutes: Routes = [
   {path: 'receipt', component: ReceiptComponent},
   {path: 'grocery-list/:user_id', component: GroceryListComponent},
   {path: 'offer-list', component: OfferListComponent},
   {path: 'shop', component: ShopComponent},
+  {path: 'admin-auth', component: AdminAuthComponent},
+  {path: 'admin', component: AdminComponent},
   {path: '', redirectTo: '/grocery-list', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];
@@ -53,11 +57,14 @@ const appRoutes: Routes = [
     ReceiptExplanationDialogComponent,
     GroceryListExplanationDialogComponent,
     OfferListExplanationDialogComponent,
-    ShopExplanationDialogComponent
+    ShopExplanationDialogComponent,
+    AdminComponent,
+    AdminAuthComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     BrowserAnimationsModule,
     MaterialModule.forRoot(), // TODO shift back to importing single Material Components instead of everything
