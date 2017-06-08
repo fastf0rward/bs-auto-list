@@ -1,0 +1,8 @@
+<form [formGroup]="loginForm" (ngSubmit)="login(loginForm)" fxLayout="column" fxLayoutAlign="center center"
+      class="layout-margin-top">
+  <md-input-container class="example-full-width">
+    <input mdInput type="password" placeholder="Pssst!" formControlName="password">
+    <md-hint *ngIf="wrongPass">wrong password</md-hint>
+  </md-input-container>
+  <button md-raised-button class="layout-margin-top">Open the door</button>
+</form>
