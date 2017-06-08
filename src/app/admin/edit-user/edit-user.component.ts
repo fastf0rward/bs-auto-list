@@ -11,6 +11,8 @@ export class EditUserComponent implements OnInit {
   user: any = {};
 
   constructor(private route: ActivatedRoute, public adminData: AdminDataService) {
+    adminData.setGoBackLink('/admin/users');
+
     this.route.params.subscribe(_params => {
       let _userId = _params['user_id'];
       if (_userId) {
