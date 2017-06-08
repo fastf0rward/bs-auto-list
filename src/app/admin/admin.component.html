@@ -2,7 +2,7 @@
   <md-list>
     <h3 md-subheader>Deelnemers</h3>
     <md-list-item *ngFor="let user of users">
-      <md-icon md-list-icon>user</md-icon>
+      <md-icon md-list-icon>face</md-icon>
       <h4 md-line>{{user.email}}</h4>
       <p md-line>toegevoegd op {{user.dateCreated | date}} </p>
       <button routerLink="users/{{user.$key}}" md-icon-button>
