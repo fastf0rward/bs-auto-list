@@ -28,6 +28,7 @@ import {AngularFireDatabase} from "angularfire2/database/database";
 import {AngularFireAuth} from "angularfire2/auth/auth";
 import {AdminComponent} from "./admin/admin.component";
 import {AdminAuthComponent} from "./admin-auth/admin-auth.component";
+import {AdminDataService} from "./admin/admin-data.service";
 
 const appRoutes: Routes = [
   {path: 'receipt', component: ReceiptComponent},
