@@ -10,7 +10,7 @@ export class GroceryListService {
   _showLoaderSubject = new BehaviorSubject(true);
   showLoader = this._showLoaderSubject.asObservable();
   products: any;
-  private _userIdSubject = new Subject();
+  private _userIdSubject = new Subject<string>();
   userId = this._userIdSubject.asObservable();
 
   constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase) {
