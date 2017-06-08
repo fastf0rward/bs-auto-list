@@ -35,7 +35,6 @@ export class ShopComponent implements OnInit {
 
   checkProduct(_product) {
     _product.checked = !_product.checked;
-    console.log(_product);
     this.groceryListService.updateProduct(_product);
   }
 
