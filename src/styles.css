@@ -22,6 +22,10 @@ body {
   margin: 1em;
 }
 
+.bs-full-width {
+  width: 100%;
+}
+
 .layout-padding-around {
   padding: 1em;
 }
