@@ -8,6 +8,7 @@ export class AdminDataService {
 
   data: any;
   currentUser: any;
+  currentSuggestions: any;
   goBackLink: string;
 
   constructor(private af: AngularFireDatabase, private afAuth: AngularFireAuth, private router: Router) {
@@ -39,13 +40,32 @@ export class AdminDataService {
     this.currentUser = this.af.object('users/' + _userId);
   }
 
+  setCurrentSuggestions(_userId: string) {
+    this.currentSuggestions = this.af.list('users/' + _userId + '/suggestions');
+  }
+
+  addSuggestion(_name) {
+    let newSuggestion = {
+      dateCreated: new Date().toISOString(),
+      name: _name,
+      suggested: true
+    };
+    this.currentSuggestions.push(newSuggestion);
+  }
+
+  removeSuggestion(_key) {
+    if (_key) {
+      this.currentSuggestions.remove(_key);
+    }
+  }
+
   setGoBackLink(_link) {
     this.goBackLink = _link;
   }
 
   goBack() {
     if (this.goBackLink) {
-      this.router.navigate(this.goBackLink);
+      this.router.navigate([this.goBackLink]);
     }
   }
 

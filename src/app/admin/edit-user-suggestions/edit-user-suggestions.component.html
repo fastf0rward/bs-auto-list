@@ -1,3 +1,16 @@
-<p>
-  edit-user-suggestions works!
-</p>
+<md-list>
+  <h3 md-subheader>Suggesties</h3>
+  <md-list-item *ngFor="let suggestion of suggestions">
+    <md-icon md-list-icon>redeem</md-icon>
+    <h4 md-line>{{suggestion.name}}</h4>
+    <p md-line>toegevoegd op {{suggestion.dateCreated | date: 'short'}} </p>
+    <button (click)="adminData.removeSuggestion(suggestion)" md-icon-button>
+      <md-icon>remove_circle</md-icon>
+    </button>
+  </md-list-item>
+</md-list>
+<div fxLayout="column" fxLayoutAlign="center start" class="layout-margin-around">
+  <md-input-container>
+    <input mdInput #name (keyup.enter)="adminData.addSuggestion(name.value); name.value = ''" placeholder="nieuwe suggestie...">
+  </md-input-container>
+</div>

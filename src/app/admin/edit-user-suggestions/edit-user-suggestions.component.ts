@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
+import {ActivatedRoute} from "@angular/router";
+import {AdminDataService} from "../admin-data.service";
 
 @Component({
   selector: 'app-edit-user-suggestions',
@@ -7,7 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditUserSuggestionsComponent implements OnInit {
 
-  constructor() { }
+  suggestions: any[] = [];
+
+  constructor(private route: ActivatedRoute, public adminData: AdminDataService) {
+    this.route.params.subscribe(_params => {
+      let _userId = _params['user_id'];
+      if (_userId) {
+        adminData.setCurrentSuggestions(_userId);
+        adminData.currentSuggestions.subscribe(_suggestions => {
+          this.suggestions = _suggestions;
+        });
+        adminData.setGoBackLink('/admin/users/' + _userId);
+      }
+    });
+  }
 
   ngOnInit() {
   }
