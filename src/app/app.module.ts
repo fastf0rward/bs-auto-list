@@ -79,7 +79,8 @@ const appRoutes: Routes = [
     CameraService,
     ReceiptService,
     AngularFireAuth,
-    AngularFireDatabase
+    AngularFireDatabase,
+    AdminDataService
   ],
   bootstrap: [AppComponent]
 })
