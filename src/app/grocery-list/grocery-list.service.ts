@@ -68,10 +68,12 @@ export class GroceryListService {
   acceptAllSuggestions(): void {
     this.products
       .subscribe(_prods => {
-        _prods.forEach(_prod => {
-          _prod.status = 'accepted';
-          this.updateProduct(_prod);
-        });
+        _prods
+          .filter(_prod => _prod.suggested && _prod.status !== 'accepted' && _prod.status !== 'rejected')
+          .forEach(_prod => {
+            _prod.status = 'accepted';
+            this.updateProduct(_prod);
+          });
       });
   }
 
