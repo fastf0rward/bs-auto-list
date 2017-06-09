@@ -7,7 +7,9 @@
     <!-- The copy-link-to-clipboard feature requires an actual input -->
     <input class="bs-there-but-gone" type="text" #userUrl value="{{user.url}}">
     <md-icon class="bs-subtle-text layout-margin-right-2x" *ngIf="user.stats">touch_app</md-icon>
-    <md-icon [ngxClipboard]="userUrl">link</md-icon>
+    <button [ngxClipboard]="userUrl" md-icon-button>
+      <md-icon>link</md-icon>
+    </button>
     <button routerLink="users/{{user.$key}}" md-icon-button>
       <md-icon>info</md-icon>
     </button>
