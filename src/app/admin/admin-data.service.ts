@@ -9,6 +9,7 @@ export class AdminDataService {
 
   data: any;
   currentUser: any;
+  currentUserStats: any;
   currentSuggestions: any;
   goBackLink: string;
 
@@ -31,6 +32,7 @@ export class AdminDataService {
       email: 'someone@somewhere.nl',
       dateCreated: new Date().toISOString(),
       suggestions: [],
+      stats: []
     };
     this.data.push(newUser);
   }
@@ -41,6 +43,7 @@ export class AdminDataService {
 
   setCurrentUser(_userId: string) {
     this.currentUser = this.af.object('users/' + _userId);
+    this.currentUserStats = this.af.list('users/' + _userId + '/stats');
   }
 
   setCurrentSuggestions(_userId: string) {

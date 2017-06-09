@@ -9,6 +9,7 @@ import {AdminDataService} from "../admin-data.service";
 })
 export class EditUserComponent implements OnInit {
   user: any = {};
+  stats: any = [];
 
   constructor(private route: ActivatedRoute, public adminData: AdminDataService) {
     adminData.setGoBackLink('/admin');
@@ -22,6 +23,9 @@ export class EditUserComponent implements OnInit {
             _user.url = _url;
             this.user = _user;
           });
+        });
+        adminData.currentUserStats.subscribe(_stats => {
+          this.stats = _stats;
         });
       }
     });

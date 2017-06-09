@@ -27,6 +27,8 @@ export class ShopComponent implements OnInit {
         return _prod['status'] == 'accepted' || _prod['status'] == 'created';
       });
     });
+
+    this.groceryListService.logWentShopping();
   }
 
   goBack() {

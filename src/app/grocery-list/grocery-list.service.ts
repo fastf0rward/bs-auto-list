@@ -10,6 +10,7 @@ export class GroceryListService {
   _showLoaderSubject = new BehaviorSubject(true);
   showLoader = this._showLoaderSubject.asObservable();
   products: any;
+  private stats: any;
   private _userIdSubject = new Subject<string>();
   userId = this._userIdSubject.asObservable();
 
@@ -21,6 +22,8 @@ export class GroceryListService {
           orderByChild: 'created'
         }
       });
+      this.stats = af.list('/users/' + _id + '/stats');
+      this.logClickedLink();
     });
   }
 
@@ -67,6 +70,24 @@ export class GroceryListService {
 
   updateProduct(product: any) {
     this.products.update(product.$key, product);
+  }
+
+  private logClickedLink() {
+    let _stat = {
+      dateCreated: new Date().toISOString(),
+      description: 'Clicked link',
+      color: 'accent'
+    };
+    this.stats.push(_stat);
+  }
+
+  logWentShopping() {
+    let _stat = {
+      dateCreated: new Date().toISOString(),
+      description: 'Went shopping',
+      color: 'accent'
+    };
+    this.stats.push(_stat);
   }
 
 }
