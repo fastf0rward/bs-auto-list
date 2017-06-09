@@ -31,7 +31,7 @@ export class GroceryListComponent implements OnInit {
       this.products = _.filter(_products, function (_prod) {
         return _prod['status'] != 'rejected';
       });
-      this.suggestions = _.filter(_products, {accepted: false});
+      this.suggestions = _products.filter(_prod => _prod.suggested && _prod.status !== 'accepted');
       this.groceryListService._showLoaderSubject.next(false);
     });
 

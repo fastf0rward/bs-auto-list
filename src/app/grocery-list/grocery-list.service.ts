@@ -3,13 +3,14 @@ import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {AngularFireAuth} from "angularfire2/auth/auth";
 import {AngularFireDatabase} from "angularfire2/database/database";
 import {Subject} from "rxjs";
+import {FirebaseListObservable} from "angularfire2/database/firebase_list_observable";
 
 @Injectable()
 export class GroceryListService {
 
   _showLoaderSubject = new BehaviorSubject(true);
   showLoader = this._showLoaderSubject.asObservable();
-  products: any;
+  products: FirebaseListObservable<any>;
   private stats: any;
   private _userIdSubject = new Subject<string>();
   userId = this._userIdSubject.asObservable();
@@ -68,7 +69,8 @@ export class GroceryListService {
     this.products
       .subscribe(_prods => {
         _prods.forEach(_prod => {
-          _prod.status = 'accepted'
+          _prod.status = 'accepted';
+          this.updateProduct(_prod);
         });
       });
   }
