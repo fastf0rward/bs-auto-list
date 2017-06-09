@@ -87,7 +87,7 @@ export class AdminDataService {
   }
 
   getUserUrl(_key) {
-    let userUrl = window.location.hostname + '/grocery-list/' + _key;
+    let userUrl = window.location.host + '/grocery-list/' + _key;
 
     return this.http.get(this.shortifyEndpoint + userUrl)
       .map(_data => {
