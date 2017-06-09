@@ -4,9 +4,9 @@
     <md-icon md-list-icon>redeem</md-icon>
     <h4 md-line>{{suggestion.name}}</h4>
     <p md-line class="bs-subtle-text">toegevoegd op {{suggestion.dateCreated | date: 'short'}} </p>
-    <md-icon class="bs-suggestion-status" *ngIf="suggestion.status == 'accepted'">done</md-icon>
-    <md-icon class="bs-suggestion-status" *ngIf="suggestion.status == 'rejected'">clear</md-icon>
-    <md-icon class="bs-suggestion-status" *ngIf="suggestion.status == 'created'">brush</md-icon>
+    <md-icon class="bs-subtle-text" *ngIf="suggestion.status == 'accepted'">done</md-icon>
+    <md-icon class="bs-subtle-text" *ngIf="suggestion.status == 'rejected'">clear</md-icon>
+    <md-icon class="bs-subtle-text" *ngIf="suggestion.status == 'created'">brush</md-icon>
     <button (click)="adminData.removeSuggestion(suggestion)" md-icon-button>
       <md-icon>remove_circle</md-icon>
     </button>
