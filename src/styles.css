@@ -35,8 +35,9 @@ body {
   font-size: 14px;
 }
 
-.bs-be-gone {
+.bs-there-but-gone {
   width: 1px;
+  height: 1px;
   opacity: 0;
 }
 

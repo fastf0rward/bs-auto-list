@@ -8,7 +8,7 @@
     </md-card-header>
     <md-card-content>
       <md-input-container class="bs-full-width">
-        <input mdInput type="email" placeholder="{{user.email}}" [(ngModel)]="user.email"
+        <input mdInput type="email" placeholder="Email" [(ngModel)]="user.email"
                (change)="adminData.updateUser(user)">
       </md-input-container>
     </md-card-content>
@@ -37,7 +37,8 @@
       <md-card-subtitle>link voor de gebruiker</md-card-subtitle>
     </md-card-header>
     <md-card-content>
-      <input class="bs-be-gone" type="text" #userUrl value="{{user.url}}">
+      <!-- The copy-link-to-clipboard feature requires an actual input -->
+      <input class="bs-there-but-gone" type="text" #userUrl value="{{user.url}}">
     </md-card-content>
     <md-card-actions>
       <button md-raised-button [ngxClipboard]="userUrl">
