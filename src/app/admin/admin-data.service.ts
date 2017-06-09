@@ -17,7 +17,7 @@ export class AdminDataService {
 
   constructor(private af: AngularFireDatabase, private afAuth: AngularFireAuth, private router: Router, private http: Http) {
     afAuth.authState.subscribe((_user) => {
-      if (_user) {
+      if (_user && !_user.isAnonymous) {
         this.data = af.list('/users', {
           query: {
             orderByChild: 'created'
