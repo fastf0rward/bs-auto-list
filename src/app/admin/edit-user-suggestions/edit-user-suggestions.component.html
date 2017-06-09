@@ -11,11 +11,15 @@
 </md-list>
 <div fxLayout="column" fxLayoutAlign="start stretch" class="layout-margin-around">
   <md-input-container>
-    <input mdInput #name (keyup.enter)="adminData.addSuggestion(name.value); name.value = ''" placeholder="nieuwe suggestie...">
+    <input mdInput #name (keyup.enter)="adminData.addSuggestion(name.value); name.value = ''"
+           placeholder="nieuwe suggestie...">
   </md-input-container>
   <button md-raised-button (click)="adminData.addSuggestion(name.value); name.value = ''">Voeg toe</button>
   <md-input-container>
-    <textarea mdInput #batchNames placeholder="nieuwe batch (aparte regels)..."></textarea>
+    <textarea mdInput rows="4" #batchNames
+              placeholder="nieuwe batch (aparte regels)..."></textarea>
   </md-input-container>
-  <button md-raised-button (click)="adminData.addBatchSuggestions(batchNames.value); batchNames.value = ''">Verwerk batch</button>
+  <button md-raised-button (click)="adminData.addBatchSuggestions(batchNames.value); batchNames.value = ''">Verwerk
+    batch
+  </button>
 </div>
