@@ -16,8 +16,8 @@ export class AdminDataService {
   private shortifyEndpoint = 'http://shortify.site/api/url/shorten/?url=';
 
   constructor(private af: AngularFireDatabase, private afAuth: AngularFireAuth, private router: Router, private http: Http) {
-    afAuth.authState.subscribe((_isAuth) => {
-      if (_isAuth) {
+    afAuth.authState.subscribe((_user) => {
+      if (_user) {
         this.data = af.list('/users', {
           query: {
             orderByChild: 'created'

@@ -20,7 +20,6 @@ export class AdminAuthComponent implements OnInit {
   }
 
   login(_form) {
-    console.log(_form);
     this.afAuth.auth.signInWithEmailAndPassword('jill@boodschatten.nl', _form.controls.password.value).then(
       () => {
         this.router.navigate(['/admin']);
