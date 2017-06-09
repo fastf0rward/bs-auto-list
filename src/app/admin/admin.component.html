@@ -6,7 +6,7 @@
     <p class="bs-subtle-text" md-line routerLink="users/{{user.$key}}">toegevoegd op {{user.dateCreated | date: 'short'}} </p>
     <!-- The copy-link-to-clipboard feature requires an actual input -->
     <input class="bs-there-but-gone" type="text" #userUrl value="{{user.url}}">
-    <md-icon class="bs-subtle-text layout-margin-right-2x" *ngIf="user.stats">touch_app</md-icon>
+    <md-icon class="bs-subtle-text" *ngIf="user.stats">touch_app</md-icon>
     <button [ngxClipboard]="userUrl" md-icon-button>
       <md-icon>link</md-icon>
     </button>
