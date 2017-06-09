@@ -16,15 +16,26 @@ export class GroceryListService {
 
   constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase) {
     this.userId.subscribe(_id => {
-      this.afAuth.auth.signInAnonymously();
-      this.products = af.list('/users/' + _id + '/suggestions', {
-        query: {
-          orderByChild: 'created'
+      afAuth.authState.subscribe(_user => {
+        if (!_user) {
+          this.afAuth.auth.signInAnonymously();
+        }
+        if (_user && _user.isAnonymous) {
+          this.logClickedLink();
         }
       });
-      this.stats = af.list('/users/' + _id + '/stats');
-      this.logClickedLink();
+      // always load the suggestions
+      this.loadData(_id);
     });
+  }
+
+  private loadData(_id: string) {
+    this.products = this.af.list('/users/' + _id + '/suggestions', {
+      query: {
+        orderByChild: 'created'
+      }
+    });
+    this.stats = this.af.list('/users/' + _id + '/stats');
   }
 
   setUserId(userId: string) {

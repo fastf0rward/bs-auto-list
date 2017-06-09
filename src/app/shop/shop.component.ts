@@ -4,6 +4,7 @@ import * as _ from "lodash";
 import {ShopExplanationDialogComponent} from "./shop-explanation-dialog.component";
 import {MdDialog} from "@angular/material";
 import {Location} from "@angular/common";
+import {AngularFireAuth} from "angularfire2/auth/auth";
 
 @Component({
   selector: 'app-shop',
@@ -14,7 +15,7 @@ export class ShopComponent implements OnInit {
 
   products: any[] = [];
 
-  constructor(private groceryListService: GroceryListService, private dialog: MdDialog, private location: Location) {
+  constructor(private groceryListService: GroceryListService, private dialog: MdDialog, private location: Location, private afAuth: AngularFireAuth) {
   }
 
   ngOnInit() {
@@ -28,7 +29,11 @@ export class ShopComponent implements OnInit {
       });
     });
 
-    this.groceryListService.logWentShopping();
+    this.afAuth.authState.subscribe(_user => {
+      if (_user && _user.isAnonymous) {
+        this.groceryListService.logWentShopping();
+      }
+    });
   }
 
   goBack() {
