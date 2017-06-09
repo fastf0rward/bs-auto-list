@@ -21,6 +21,10 @@ body {
   margin-right: 0.5em !important;
 }
 
+.layout-margin-right-2x {
+  margin-right: 1em !important;
+}
+
 .layout-margin-around {
   margin: 1em;
 }
