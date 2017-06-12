@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {AngularFireAuth} from "angularfire2/auth/auth";
 import {Router} from "@angular/router";
 import {AdminDataService} from "./admin-data.service";
+import * as _ from "lodash";
 
 @Component({
   selector: 'app-admin',
@@ -11,6 +12,7 @@ import {AdminDataService} from "./admin-data.service";
 export class AdminComponent implements OnInit {
 
   users: any[];
+  showLoader: boolean = true;
 
   constructor(private afAuth: AngularFireAuth, private router: Router, public adminData: AdminDataService) {
     afAuth.authState.subscribe((_user) => {
@@ -24,6 +26,7 @@ export class AdminComponent implements OnInit {
             })
           });
           this.users = _users;
+          this.showLoader = false;
         });
       }
     });
@@ -34,6 +37,10 @@ export class AdminComponent implements OnInit {
 
   addUser() {
     this.adminData.addUser();
+  }
+
+  hasGoneShopping(_user) {
+    return _.find(_user.stats, {description: 'Went shopping'});
   }
 
 }

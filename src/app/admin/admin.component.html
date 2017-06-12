@@ -1,22 +1,30 @@
-<md-list>
-  <h3 md-subheader>Deelnemers</h3>
-  <md-list-item *ngFor="let user of users">
-    <md-icon md-list-icon>face</md-icon>
-    <h4 md-line routerLink="users/{{user.$key}}">{{user.email}}</h4>
-    <p class="bs-subtle-text" md-line routerLink="users/{{user.$key}}">toegevoegd op {{user.dateCreated | date: 'short'}} </p>
-    <!-- The copy-link-to-clipboard feature requires an actual input -->
-    <input class="bs-there-but-gone" type="text" #userUrl value="{{user.url}}">
-    <md-icon class="bs-subtle-text" *ngIf="user.stats">touch_app</md-icon>
-    <button [ngxClipboard]="userUrl" md-icon-button>
-      <md-icon>link</md-icon>
+<div fxLayout="row" fxLayoutAlign="center center" class="layout-margin-top">
+  <md-progress-spinner *ngIf="showLoader" mode="indeterminate"></md-progress-spinner>
+</div>
+
+<div *ngIf="!showLoader">
+  <md-list>
+    <h3 md-subheader>Deelnemers</h3>
+    <md-list-item *ngFor="let user of users">
+      <md-icon md-list-icon>face</md-icon>
+      <h4 md-line routerLink="users/{{user.$key}}">{{user.email}}</h4>
+      <p class="bs-subtle-text" md-line routerLink="users/{{user.$key}}">toegevoegd op {{user.dateCreated | date:
+        'short'}} </p>
+      <!-- The copy-link-to-clipboard feature requires an actual input -->
+      <input class="bs-there-but-gone" type="text" #userUrl value="{{user.url}}">
+      <md-icon class="bs-subtle-text" *ngIf="user.stats">touch_app</md-icon>
+      <md-icon class="bs-subtle-text" *ngIf="hasGoneShopping(user)">shopping_cart</md-icon>
+      <button [ngxClipboard]="userUrl" md-icon-button>
+        <md-icon>link</md-icon>
+      </button>
+      <button routerLink="users/{{user.$key}}" md-icon-button>
+        <md-icon>info</md-icon>
+      </button>
+    </md-list-item>
+  </md-list>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <button (click)="addUser()" color="primary" md-fab>
+      <md-icon>add</md-icon>
     </button>
-    <button routerLink="users/{{user.$key}}" md-icon-button>
-      <md-icon>info</md-icon>
-    </button>
-  </md-list-item>
-</md-list>
-<div fxLayout="column" fxLayoutAlign="center center">
-  <button (click)="addUser()" color="primary" md-fab>
-    <md-icon>add</md-icon>
-  </button>
+  </div>
 </div>
