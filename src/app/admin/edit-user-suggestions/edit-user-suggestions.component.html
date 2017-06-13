@@ -15,7 +15,7 @@
     </button>
   </md-list-item>
 
-  <md-list-item class="bs-controls" *ngIf="suggestions.length > 0" fxLayout="column" fxLayoutAlign="center end">
+  <md-list-item class="bs-controls layout-margin-top" *ngIf="suggestions.length > 0" fxLayout="column" fxLayoutAlign="center end">
     <button (click)="adminData.resetAllSuggestions(suggestions)" md-icon-button>
       <md-icon color="warn">autorenew</md-icon>
     </button>
@@ -25,6 +25,8 @@
   </md-list-item>
 
 </md-list>
+
+<md-divider class="layout-margin-top"></md-divider>
 
 <div fxLayout="column" fxLayoutAlign="start stretch" class="layout-margin-around">
   <md-input-container>
