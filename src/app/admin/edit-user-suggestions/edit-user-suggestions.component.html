@@ -31,13 +31,18 @@
     <input mdInput #name (keyup.enter)="adminData.addSuggestion(name.value); name.value = ''"
            placeholder="nieuwe suggestie...">
   </md-input-container>
-  <button md-raised-button (click)="adminData.addSuggestion(name.value); name.value = ''">Voeg toe</button>
+  <button fxFlexAlign="start" color="primary" md-raised-button (click)="adminData.addSuggestion(name.value); name.value = ''">
+    <md-icon>card_giftcard</md-icon> Voeg toe
+  </button>
+</div>
+
+<div fxLayout="column" fxLayoutAlign="start stretch" class="layout-margin-around">
   <md-input-container>
     <textarea mdInput rows="4" #batchNames
               placeholder="nieuwe batch (aparte regels)..."></textarea>
   </md-input-container>
-  <button md-raised-button (click)="adminData.addBatchSuggestions(batchNames.value); batchNames.value = ''">Verwerk
-    batch
+  <button fxFlexAlign="start" color="primary" md-raised-button (click)="adminData.addBatchSuggestions(batchNames.value); batchNames.value = ''">
+    <md-icon>cloud_upload</md-icon> Importeer Batch
   </button>
 </div>
 
@@ -46,7 +51,7 @@
     <textarea [(ngModel)]="batchExport" mdInput rows="4"
               placeholder="Batch Export"></textarea>
   </md-input-container>
-  <button md-raised-button (click)="adminData.exportBatchSuggestions(suggestions)">Maak
-    export
+  <button fxFlexAlign="start" color="primary" md-raised-button (click)="adminData.exportBatchSuggestions(suggestions)">
+    <md-icon>cloud_download</md-icon> Exporteer Batch
   </button>
 </div>
