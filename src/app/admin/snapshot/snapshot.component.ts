@@ -11,6 +11,7 @@ export class SnapshotComponent implements OnInit {
 
   stats: any[];
   suggestions: any[];
+  showLoader: boolean = true;
 
   constructor(adminData: AdminDataService, private route: ActivatedRoute) {
     this.route.params.subscribe(_params => {
@@ -23,9 +24,11 @@ export class SnapshotComponent implements OnInit {
         adminData.setCurrentSnapshot(_userId, _snapshotId).subscribe(() => {
           adminData.currentSnapshotStats.subscribe(_stats => {
             this.stats = _stats;
+            this.showLoader = false;
           });
           adminData.currentSnapshotSuggestions.subscribe(_suggestions => {
             this.suggestions = _suggestions;
+            this.showLoader = false;
           });
         });
       }
