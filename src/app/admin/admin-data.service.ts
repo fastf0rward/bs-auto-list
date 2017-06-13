@@ -3,6 +3,7 @@ import {AngularFireDatabase} from "angularfire2/database/database";
 import {AngularFireAuth} from "angularfire2/auth/auth";
 import {Router} from "@angular/router";
 import {Http} from "@angular/http";
+import * as _ from "lodash";
 import {BehaviorSubject} from "rxjs";
 
 @Injectable()
@@ -79,6 +80,19 @@ export class AdminDataService {
     }
   }
 
+  snapshotSuggestionsAndStats() {
+    if (!_.isEmpty(this.userSnapshot)) {
+      // copy old stats and suggestions to history
+      let newHistoryEntry = {
+        dateCreated: new Date().toISOString(),
+        stats: Object.assign({}, this.userSnapshot['stats']),
+        suggestions: Object.assign({}, this.userSnapshot['suggestions'])
+      };
+      this.currentUserHistory.push(newHistoryEntry);
+      // clean current stats
+      this.currentUser.update({stats: {}});
+    }
+  }
   setGoBackLink(_link) {
     this.goBackLink = _link;
   }
