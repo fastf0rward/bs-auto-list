@@ -10,6 +10,7 @@ import {AdminDataService} from "../admin-data.service";
 export class EditUserSuggestionsComponent implements OnInit {
 
   suggestions: any[] = [];
+  batchExport: string;
 
   constructor(private route: ActivatedRoute, public adminData: AdminDataService) {
     this.route.params.subscribe(_params => {
@@ -21,6 +22,10 @@ export class EditUserSuggestionsComponent implements OnInit {
         });
         adminData.setGoBackLink('/admin/users/' + _userId);
       }
+    });
+
+    adminData.batchExport.subscribe(_batch => {
+      this.batchExport = _batch;
     });
   }
 

@@ -27,3 +27,13 @@
     batch
   </button>
 </div>
+
+<div fxLayout="column" fxLayoutAlign="start stretch" class="layout-margin-around">
+  <md-input-container>
+    <textarea [(ngModel)]="batchExport" mdInput rows="4"
+              placeholder="Batch Export"></textarea>
+  </md-input-container>
+  <button md-raised-button (click)="adminData.exportBatchSuggestions(suggestions)">Maak
+    export
+  </button>
+</div>

@@ -3,6 +3,7 @@ import {AngularFireDatabase} from "angularfire2/database/database";
 import {AngularFireAuth} from "angularfire2/auth/auth";
 import {Router} from "@angular/router";
 import {Http} from "@angular/http";
+import {BehaviorSubject} from "rxjs";
 
 @Injectable()
 export class AdminDataService {
@@ -12,6 +13,8 @@ export class AdminDataService {
   currentUserStats: any;
   currentSuggestions: any;
   goBackLink: string;
+  private _batchExportSubject = new BehaviorSubject<string>('');
+  batchExport = this._batchExportSubject.asObservable();
 
   private shortifyEndpoint = 'http://shortify.site/api/url/shorten/?url=';
 
@@ -94,6 +97,14 @@ export class AdminDataService {
         let _url = _data['_body'].substr(2);
         return _url || userUrl;
       });
+  }
+
+  exportBatchSuggestions(_suggestions) {
+    let _batch: string = '';
+    _suggestions.forEach(_sugg => {
+      _batch += _sugg.name + '\n';
+    });
+    this._batchExportSubject.next(_batch);
   }
 
 }
