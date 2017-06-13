@@ -7,10 +7,23 @@
     <md-icon class="bs-subtle-text" *ngIf="suggestion.status == 'accepted'">done</md-icon>
     <md-icon class="bs-subtle-text" *ngIf="suggestion.status == 'rejected'">clear</md-icon>
     <md-icon class="bs-subtle-text" *ngIf="suggestion.status == 'created'">brush</md-icon>
+    <button (click)="adminData.resetSuggestion(suggestion)" md-icon-button>
+      <md-icon>autorenew</md-icon>
+    </button>
     <button (click)="adminData.removeSuggestion(suggestion)" md-icon-button>
       <md-icon>remove_circle</md-icon>
     </button>
   </md-list-item>
+
+  <md-list-item class="bs-controls" *ngIf="suggestions.length > 0" fxLayout="column" fxLayoutAlign="center end">
+    <button (click)="adminData.resetAllSuggestions(suggestions)" md-icon-button>
+      <md-icon color="warn">autorenew</md-icon>
+    </button>
+    <button (click)="adminData.removeAllSuggestions()" md-icon-button>
+      <md-icon color="warn">remove_circle</md-icon>
+    </button>
+  </md-list-item>
+
 </md-list>
 
 <div fxLayout="column" fxLayoutAlign="start stretch" class="layout-margin-around">

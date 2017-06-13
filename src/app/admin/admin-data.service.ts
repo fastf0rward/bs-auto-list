@@ -13,7 +13,11 @@ export class AdminDataService {
   currentUser: any;
   currentUserStats: any;
   currentSuggestions: any;
+  currentUserHistory: any;
   goBackLink: string;
+  userId: string;
+  private userSnapshot: {};
+
   private _batchExportSubject = new BehaviorSubject<string>('');
   batchExport = this._batchExportSubject.asObservable();
 
@@ -48,6 +52,11 @@ export class AdminDataService {
   setCurrentUser(_userId: string) {
     this.currentUser = this.af.object('users/' + _userId);
     this.currentUserStats = this.af.list('users/' + _userId + '/stats');
+    this.currentUserHistory = this.af.list('users/' + _userId + '/history');
+    this.userId = _userId;
+    this.af.object('/users/' + _userId, {preserveSnapshot: true}).subscribe(_snapshot => {
+      this.userSnapshot = _snapshot.val();
+    });
   }
 
   setCurrentSuggestions(_userId: string) {
@@ -74,6 +83,10 @@ export class AdminDataService {
     }
   }
 
+  removeAllSuggestions() {
+    this.currentUser.update({suggestions: {}});
+  }
+
   removeSuggestion(_key) {
     if (_key) {
       this.currentSuggestions.remove(_key);
@@ -93,6 +106,19 @@ export class AdminDataService {
       this.currentUser.update({stats: {}});
     }
   }
+
+  resetAllSuggestions(_suggestions) {
+    _suggestions.forEach(_sug => {
+      this.resetSuggestion(_sug);
+    })
+  }
+
+  private resetSuggestion(_suggestion) {
+    _suggestion.status = null;
+    this.currentSuggestions.update(_suggestion.$key, _suggestion);
+  }
+
+
   setGoBackLink(_link) {
     this.goBackLink = _link;
   }
