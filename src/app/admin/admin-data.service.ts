@@ -13,7 +13,10 @@ export class AdminDataService {
   currentUser: any;
   currentUserStats: any;
   currentSuggestions: any;
-  currentUserHistory: any;
+  currentUserSnapshots: any;
+  currentSnapshot: any;
+  currentSnapshotStats: any;
+  currentSnapshotSuggestions: any;
   goBackLink: string;
   userId: string;
   private userSnapshot: {};
@@ -52,7 +55,7 @@ export class AdminDataService {
   setCurrentUser(_userId: string) {
     this.currentUser = this.af.object('users/' + _userId);
     this.currentUserStats = this.af.list('users/' + _userId + '/stats');
-    this.currentUserHistory = this.af.list('users/' + _userId + '/history');
+    this.currentUserSnapshots = this.af.list('users/' + _userId + '/history');
     this.userId = _userId;
     this.af.object('/users/' + _userId, {preserveSnapshot: true}).subscribe(_snapshot => {
       this.userSnapshot = _snapshot.val();
@@ -61,6 +64,13 @@ export class AdminDataService {
 
   setCurrentSuggestions(_userId: string) {
     this.currentSuggestions = this.af.list('users/' + _userId + '/suggestions');
+  }
+
+  setCurrentSnapshot(_userId: string, _snapshotId: string) {
+    this.currentSnapshot = this.af.list('users/' + _userId + '/history/' + _snapshotId);
+    this.currentSnapshotStats = this.af.list('users/' + _userId + '/history/' + _snapshotId + '/stats');
+    this.currentSnapshotSuggestions = this.af.list('users/' + _userId + '/history/' + _snapshotId + '/suggestions');
+    return this.currentSnapshot;
   }
 
   addSuggestion(_name) {
@@ -96,12 +106,12 @@ export class AdminDataService {
   snapshotSuggestionsAndStats() {
     if (!_.isEmpty(this.userSnapshot)) {
       // copy old stats and suggestions to history
-      let newHistoryEntry = {
+      let newSnapshot = {
         dateCreated: new Date().toISOString(),
         stats: Object.assign({}, this.userSnapshot['stats']),
         suggestions: Object.assign({}, this.userSnapshot['suggestions'])
       };
-      this.currentUserHistory.push(newHistoryEntry);
+      this.currentUserSnapshots.push(newSnapshot);
       // clean current stats
       this.currentUser.update({stats: {}});
     }

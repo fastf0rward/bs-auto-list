@@ -32,6 +32,7 @@ import {AdminDataService} from "./admin/admin-data.service";
 import {EditUserComponent} from "./admin/edit-user/edit-user.component";
 import {EditUserSuggestionsComponent} from "./admin/edit-user-suggestions/edit-user-suggestions.component";
 import {ClipboardModule} from "ngx-clipboard";
+import {SnapshotComponent} from "./admin/snapshot/snapshot.component";
 
 const appRoutes: Routes = [
   {path: 'receipt', component: ReceiptComponent},
@@ -42,6 +43,7 @@ const appRoutes: Routes = [
   {path: 'admin', component: AdminComponent},
   {path: 'admin/users/:user_id', component: EditUserComponent},
   {path: 'admin/users/:user_id/suggestions', component: EditUserSuggestionsComponent},
+  {path: 'admin/users/:user_id/snapshots/:snapshot_id', component: SnapshotComponent},
   {path: '', redirectTo: '/grocery-list', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];
@@ -67,7 +69,8 @@ const appRoutes: Routes = [
     AdminComponent,
     AdminAuthComponent,
     EditUserComponent,
-    EditUserSuggestionsComponent
+    EditUserSuggestionsComponent,
+    SnapshotComponent
   ],
   imports: [
     BrowserModule,
