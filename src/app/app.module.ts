@@ -33,7 +33,7 @@ import {EditUserComponent} from "./admin/edit-user/edit-user.component";
 import {EditUserSuggestionsComponent} from "./admin/edit-user-suggestions/edit-user-suggestions.component";
 import {ClipboardModule} from "ngx-clipboard";
 import {SnapshotComponent} from "./admin/snapshot/snapshot.component";
-import {Ng2OrderModule} from "ng2-order-pipe";
+import {OrderModule} from "ngx-order-pipe";
 import {ConfirmationDialogComponent} from "./components/confirmation-dialog/confirmation-dialog.component";
 
 const appRoutes: Routes = [
@@ -69,6 +69,7 @@ const appRoutes: Routes = [
     GroceryListExplanationDialogComponent,
     OfferListExplanationDialogComponent,
     ShopExplanationDialogComponent,
+    ConfirmationDialogComponent,
     AdminComponent,
     AdminAuthComponent,
     EditUserComponent,
@@ -82,13 +83,13 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpModule,
     BrowserAnimationsModule,
-    MaterialModule.forRoot(), // TODO shift back to importing single Material Components instead of everything
+    MaterialModule,
     RouterModule.forRoot(appRoutes),
     FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     ClipboardModule,
-    Ng2OrderModule
+    OrderModule
   ],
   providers: [
     GroceryListService,
