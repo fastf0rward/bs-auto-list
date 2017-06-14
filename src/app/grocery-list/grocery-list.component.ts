@@ -4,7 +4,6 @@ import * as _ from "lodash";
 import {ActivatedRoute} from "@angular/router";
 import {GroceryListExplanationDialogComponent} from "./grocery-list-explanation-dialog.component";
 import {MdDialog} from "@angular/material";
-import {AngularFireAuth} from "angularfire2/auth/auth";
 
 @Component({
   selector: 'app-grocery-list',
@@ -16,7 +15,7 @@ export class GroceryListComponent implements OnInit {
   suggestions: any[] = [];
   showLoader: boolean;
 
-  constructor(public groceryListService: GroceryListService, private route: ActivatedRoute, private dialog: MdDialog, private afAuth: AngularFireAuth) {
+  constructor(public groceryListService: GroceryListService, private route: ActivatedRoute, private dialog: MdDialog) {
     this.groceryListService.showLoader.subscribe(_show => {
       this.showLoader = _show;
     });
