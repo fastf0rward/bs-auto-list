@@ -34,6 +34,7 @@ import {EditUserSuggestionsComponent} from "./admin/edit-user-suggestions/edit-u
 import {ClipboardModule} from "ngx-clipboard";
 import {SnapshotComponent} from "./admin/snapshot/snapshot.component";
 import {Ng2OrderModule} from "ng2-order-pipe";
+import {ConfirmationDialogComponent} from "./components/confirmation-dialog/confirmation-dialog.component";
 
 const appRoutes: Routes = [
   {path: 'receipt', component: ReceiptComponent},
@@ -54,7 +55,8 @@ const appRoutes: Routes = [
     ReceiptExplanationDialogComponent,
     GroceryListExplanationDialogComponent,
     OfferListExplanationDialogComponent,
-    ShopExplanationDialogComponent
+    ShopExplanationDialogComponent,
+    ConfirmationDialogComponent
   ],
   declarations: [
     AppComponent,
@@ -71,7 +73,8 @@ const appRoutes: Routes = [
     AdminAuthComponent,
     EditUserComponent,
     EditUserSuggestionsComponent,
-    SnapshotComponent
+    SnapshotComponent,
+
   ],
   imports: [
     BrowserModule,

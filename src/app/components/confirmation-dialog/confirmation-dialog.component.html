@@ -1,0 +1,14 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <h2 md-dialog-title>
+    Sure?
+  </h2>
+</div>
+
+<md-dialog-content>
+  Are you sure you want to make a snapshot? The stats and suggestions will be copied to the snapshot, and the current stats (clickedLink/wentShopping) will be cleaned.
+</md-dialog-content>
+
+<md-dialog-actions>
+  <button md-button md-dialog-close>Cancel</button>
+  <button color="primary" md-button [md-dialog-close]="true">Go!</button>
+</md-dialog-actions>

@@ -1,6 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {AdminDataService} from "../admin-data.service";
+import {MdDialog} from "@angular/material";
+import {ConfirmationDialogComponent} from "../../components/confirmation-dialog/confirmation-dialog.component";
 
 @Component({
   selector: 'app-edit-user',
@@ -12,7 +14,7 @@ export class EditUserComponent implements OnInit {
   stats: any = [];
   snapshots: any = [];
 
-  constructor(private route: ActivatedRoute, public adminData: AdminDataService) {
+  constructor(private route: ActivatedRoute, public adminData: AdminDataService, private dialog: MdDialog) {
     adminData.setGoBackLink('/admin');
 
     this.route.params.subscribe(_params => {
@@ -33,9 +35,19 @@ export class EditUserComponent implements OnInit {
         });
       }
     });
+
   }
 
   ngOnInit() {
+  }
+
+  snapshotSuggestionsAndStats() {
+    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    dialogRef.afterClosed().subscribe(_result => {
+      if (_result) {
+        this.adminData.snapshotSuggestionsAndStats();
+      }
+    });
   }
 
 }
