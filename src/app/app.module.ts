@@ -33,6 +33,7 @@ import {EditUserComponent} from "./admin/edit-user/edit-user.component";
 import {EditUserSuggestionsComponent} from "./admin/edit-user-suggestions/edit-user-suggestions.component";
 import {ClipboardModule} from "ngx-clipboard";
 import {SnapshotComponent} from "./admin/snapshot/snapshot.component";
+import {Ng2OrderModule} from "ng2-order-pipe";
 
 const appRoutes: Routes = [
   {path: 'receipt', component: ReceiptComponent},
@@ -83,7 +84,8 @@ const appRoutes: Routes = [
     FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    ClipboardModule
+    ClipboardModule,
+    Ng2OrderModule
   ],
   providers: [
     GroceryListService,
