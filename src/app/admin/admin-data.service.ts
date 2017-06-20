@@ -5,18 +5,20 @@ import {Router} from "@angular/router";
 import {Http} from "@angular/http";
 import * as _ from "lodash";
 import {BehaviorSubject} from "rxjs";
+import {FirebaseListObservable} from "angularfire2/database/firebase_list_observable";
+import {FirebaseObjectObservable} from "angularfire2/database/firebase_object_observable";
 
 @Injectable()
 export class AdminDataService {
 
   data: any;
-  currentUser: any;
-  currentUserStats: any;
-  currentSuggestions: any;
-  currentUserSnapshots: any;
-  currentSnapshot: any;
-  currentSnapshotStats: any;
-  currentSnapshotSuggestions: any;
+  currentUser: FirebaseObjectObservable<any>;
+  currentUserStats: FirebaseListObservable<any>;
+  currentSuggestions: FirebaseListObservable<any>;
+  currentUserSnapshots: FirebaseListObservable<any>;
+  currentSnapshot: FirebaseObjectObservable<any>;
+  currentSnapshotStats: FirebaseListObservable<any>;
+  currentSnapshotSuggestions: FirebaseListObservable<any>;
   goBackLink: string;
   userId: string;
   private userSnapshot: {};
@@ -67,7 +69,7 @@ export class AdminDataService {
   }
 
   setCurrentSnapshot(_userId: string, _snapshotId: string) {
-    this.currentSnapshot = this.af.list('users/' + _userId + '/history/' + _snapshotId);
+    this.currentSnapshot = this.af.object('users/' + _userId + '/history/' + _snapshotId);
     this.currentSnapshotStats = this.af.list('users/' + _userId + '/history/' + _snapshotId + '/stats');
     this.currentSnapshotSuggestions = this.af.list('users/' + _userId + '/history/' + _snapshotId + '/suggestions');
     return this.currentSnapshot;
