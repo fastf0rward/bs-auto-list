@@ -8,7 +8,7 @@ import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 @Component({
   selector: 'app-offer-list',
   templateUrl: './offer-list.component.html',
-  styleUrls: ['./offer-list.component.css']
+  styleUrls: ['./offer-list.component.scss']
 })
 export class OfferListComponent implements OnInit {
   products: any[];

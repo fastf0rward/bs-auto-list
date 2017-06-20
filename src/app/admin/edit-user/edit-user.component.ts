@@ -7,7 +7,7 @@ import {ConfirmationDialogComponent} from "../../components/confirmation-dialog/
 @Component({
   selector: 'app-edit-user',
   templateUrl: './edit-user.component.html',
-  styleUrls: ['./edit-user.component.css']
+  styleUrls: ['./edit-user.component.scss']
 })
 export class EditUserComponent implements OnInit {
   user: any = {};

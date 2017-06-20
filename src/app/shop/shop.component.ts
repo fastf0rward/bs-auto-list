@@ -9,7 +9,7 @@ import {AngularFireAuth} from "angularfire2/auth/auth";
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.css']
+  styleUrls: ['./shop.component.scss']
 })
 export class ShopComponent implements OnInit {
 

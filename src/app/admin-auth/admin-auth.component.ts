@@ -6,7 +6,7 @@ import {FormBuilder, Validators} from "@angular/forms";
 @Component({
   selector: 'app-admin-auth',
   templateUrl: './admin-auth.component.html',
-  styleUrls: ['./admin-auth.component.css']
+  styleUrls: ['./admin-auth.component.scss']
 })
 export class AdminAuthComponent implements OnInit {
 

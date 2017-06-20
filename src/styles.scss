@@ -1,7 +1,3 @@
-@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
-@import 'https://fonts.googleapis.com/icon?family=Roboto';
-@import '../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
-
 body {
   font-family: 'Roboto', sans-serif;
   max-width: 600px;
@@ -52,19 +48,35 @@ body {
   color: #9e9e9e;
 }
 
-.ty-pieces-select .mat-select-trigger
-{
-  min-width: 35px !important;
-}
-.ty-pieces-select .mat-option {
-  padding: 0 2px !important;
+.ty-pieces-select {
+  width: 35px;
+  margin-right: 3px;
+
+  .mat-select-trigger {
+    min-width: 35px !important;
+  }
+  .mat-option {
+    padding: 0 2px !important;
+  }
+
 }
 
-.ty-quantity-select .mat-select-trigger
-{
-  min-width: 55px !important;
-}
-.ty-quantity-select .mat-option {
-  padding: 0 2px !important;
+.ty-product-details {
+  .mat-select-arrow,
+  .mat-select-disabled .mat-select-value,
+  .mat-select-trigger {
+    color: rgba(0, 0, 0, .15) !important;
+  }
 }
 
+.ty-quantity-select {
+  width: 55px;
+  margin-right: 2%;
+
+  .mat-select-trigger {
+    min-width: 55px !important;
+  }
+  .mat-option {
+    padding: 0 2px !important;
+  }
+}

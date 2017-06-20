@@ -5,7 +5,7 @@ import {ActivatedRoute} from "@angular/router";
 @Component({
   selector: 'app-snapshot',
   templateUrl: './snapshot.component.html',
-  styleUrls: ['./snapshot.component.css']
+  styleUrls: ['./snapshot.component.scss']
 })
 export class SnapshotComponent implements OnInit {
 

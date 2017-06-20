@@ -7,7 +7,7 @@ import {ReceiptExplanationDialogComponent} from "./receipt-explanation-dialog.co
 @Component({
   selector: 'app-receipt',
   templateUrl: './receipt.component.html',
-  styleUrls: ['./receipt.component.css']
+  styleUrls: ['./receipt.component.scss']
 })
 export class ReceiptComponent implements OnInit, AfterViewInit {
 

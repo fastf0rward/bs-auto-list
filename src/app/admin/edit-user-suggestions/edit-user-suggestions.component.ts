@@ -5,7 +5,7 @@ import {AdminDataService} from "../admin-data.service";
 @Component({
   selector: 'app-edit-user-suggestions',
   templateUrl: './edit-user-suggestions.component.html',
-  styleUrls: ['./edit-user-suggestions.component.css']
+  styleUrls: ['./edit-user-suggestions.component.scss']
 })
 export class EditUserSuggestionsComponent implements OnInit {
 
