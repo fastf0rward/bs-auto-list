@@ -27,3 +27,13 @@
 .bs-suggestion-list .bs-suggestion-caption {
 
 }
+
+.ty-pieces-select {
+  width: 35px;
+  margin-right: 3px;
+}
+
+.ty-quantity-select {
+  width: 55px;
+  margin-right: 2%;
+}
