@@ -14,33 +14,37 @@
       [ngClass]="{'bs-suggestion': product.suggested && product.status != 'accepted', 'bs-accepted': product.status == 'accepted'}"
       *ngFor="let product of products">
 
-      <md-select class="ty-product-details ty-pieces-select" floatPlaceholder="never" placeholder="#" [(ngModel)]="product.pieces" (ngModelChange)="groceryListService.updateProduct(product)">
-        <md-option *ngFor="let option of groceryListService.piecesOptions" [value]="option">{{ option }}x</md-option>
-      </md-select>
-      <md-select class="ty-product-details ty-quantity-select" floatPlaceholder="never" placeholder="kg" [(ngModel)]="product.quantity" (ngModelChange)="groceryListService.updateProduct(product)">
-        <md-option *ngFor="let option of groceryListService.quantityOptions" [value]="option">{{ option }}</md-option>
-      </md-select>
-
       <h4 md-line>{{product.name}}</h4>
       <p *ngIf="product.bought" class="bs-product-caption" md-line>{{product.bought}}</p>
 
-      <button *ngIf="product.suggested && product.status != 'accepted'" class="bs-accept-suggestion" md-mini-fab
-              color="primary"
-              (click)="groceryListService.acceptSuggestion(product)">
-        <md-icon>done</md-icon>
-      </button>
-      <button *ngIf="product.suggested && product.status != 'rejected'"
-              class="bs-reject-suggestion layout-margin-left"
-              md-mini-fab
-              color="warn"
-              (click)="groceryListService.rejectSuggestion(product)">
-        <md-icon>clear</md-icon>
-      </button>
+      <md-select class="bs-product-details bs-pieces-select" floatPlaceholder="never" placeholder="#"
+                 [(ngModel)]="product.pieces" (ngModelChange)="groceryListService.updateProduct(product)">
+        <md-option *ngFor="let option of groceryListService.piecesOptions" [value]="option">{{ option }}x</md-option>
+      </md-select>
+      <md-select class="bs-product-details bs-quantity-select" floatPlaceholder="never" placeholder="kg"
+                 [(ngModel)]="product.quantity" (ngModelChange)="groceryListService.updateProduct(product)">
+        <md-option *ngFor="let option of groceryListService.quantityOptions" [value]="option">{{ option }}</md-option>
+      </md-select>
 
-      <button *ngIf="!product.suggested" class="bs-remove-product layout-margin-left"
-              (click)="groceryListService.removeProduct(product)" md-mini-fab>
-        <md-icon>clear</md-icon>
-      </button>
+      <div fxLayout="row" fxLayoutAlign="end center" class="bs-grocery-list-actions">
+        <button *ngIf="product.suggested && product.status != 'accepted'" class="bs-accept-suggestion" md-mini-fab
+                color="primary"
+                (click)="groceryListService.acceptSuggestion(product)">
+          <md-icon>done</md-icon>
+        </button>
+        <button *ngIf="product.suggested && product.status != 'rejected'"
+                class="bs-reject-suggestion layout-margin-left"
+                md-mini-fab
+                color="warn"
+                (click)="groceryListService.rejectSuggestion(product)">
+          <md-icon>clear</md-icon>
+        </button>
+
+        <button *ngIf="!product.suggested" class="bs-remove-product layout-margin-left"
+                (click)="groceryListService.removeProduct(product)" md-mini-fab>
+          <md-icon>clear</md-icon>
+        </button>
+      </div>
 
     </md-list-item>
 
