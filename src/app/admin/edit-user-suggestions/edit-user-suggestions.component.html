@@ -3,27 +3,36 @@
   <md-list-item *ngFor="let suggestion of suggestions">
     <md-icon md-list-icon>redeem</md-icon>
     <h4 md-line>{{suggestion.name}}</h4>
-    <p md-line class="bs-subtle-text">toegevoegd op {{suggestion.dateCreated | date: 'short'}} </p>
+    <p md-line class="bs-subtle-text bs-caption">
+      {{suggestion.dateCreated | date: 'short'}}
+    </p>
+    <p md-line class="bs-subtle-text bs-caption">
+      <md-icon *ngIf="suggestion.status == 'accepted'">done</md-icon>
+      <md-icon *ngIf="suggestion.status == 'rejected'">clear</md-icon>
+      <md-icon *ngIf="suggestion.status == 'created'">brush</md-icon>
+    </p>
 
-    <md-select class="ty-product-details ty-pieces-select" floatPlaceholder="never" placeholder="#" [(ngModel)]="suggestion.pieces" (ngModelChange)="adminData.updateSuggestion(suggestion)">
-      <md-option *ngFor="let option of groceryListService.piecesOptions" [value]="option">{{ option }}x</md-option>
-    </md-select>
-    <md-select class="ty-product-details ty-quantity-select" floatPlaceholder="never" placeholder="kg" [(ngModel)]="suggestion.quantity" (ngModelChange)="adminData.updateSuggestion(suggestion)">
-      <md-option *ngFor="let option of groceryListService.quantityOptions" [value]="option">{{ option }}</md-option>
-    </md-select>
+    <div fxLayout="row" fxLayoutAlign="end center" class="bs-grocery-list-actions">
+      <md-select class="bs-product-details bs-pieces-select" floatPlaceholder="never" placeholder="#"
+                 [(ngModel)]="suggestion.pieces" (ngModelChange)="adminData.updateSuggestion(suggestion)">
+        <md-option *ngFor="let option of groceryListService.piecesOptions" [value]="option">{{ option }}x</md-option>
+      </md-select>
+      <md-select class="bs-product-details bs-quantity-select" floatPlaceholder="never" placeholder="kg"
+                 [(ngModel)]="suggestion.quantity" (ngModelChange)="adminData.updateSuggestion(suggestion)">
+        <md-option *ngFor="let option of groceryListService.quantityOptions" [value]="option">{{ option }}</md-option>
+      </md-select>
 
-    <md-icon class="bs-subtle-text" *ngIf="suggestion.status == 'accepted'">done</md-icon>
-    <md-icon class="bs-subtle-text" *ngIf="suggestion.status == 'rejected'">clear</md-icon>
-    <md-icon class="bs-subtle-text" *ngIf="suggestion.status == 'created'">brush</md-icon>
-    <button (click)="adminData.resetSuggestion(suggestion)" md-icon-button>
-      <md-icon>autorenew</md-icon>
-    </button>
-    <button (click)="adminData.removeSuggestion(suggestion)" md-icon-button>
-      <md-icon>remove_circle</md-icon>
-    </button>
+      <button (click)="adminData.resetSuggestion(suggestion)" md-icon-button>
+        <md-icon>autorenew</md-icon>
+      </button>
+      <button (click)="adminData.removeSuggestion(suggestion)" md-icon-button>
+        <md-icon>remove_circle</md-icon>
+      </button>
+    </div>
   </md-list-item>
 
-  <md-list-item class="bs-controls layout-margin-top" *ngIf="suggestions.length > 0" fxLayout="column" fxLayoutAlign="center end">
+  <md-list-item class="bs-controls layout-margin-top" *ngIf="suggestions.length > 0" fxLayout="column"
+                fxLayoutAlign="center end">
     <button (click)="adminData.resetAllSuggestions(suggestions)" md-icon-button>
       <md-icon color="warn">autorenew</md-icon>
     </button>
@@ -41,8 +50,10 @@
     <input mdInput #name (keyup.enter)="adminData.addSuggestion(name.value); name.value = ''"
            placeholder="nieuwe suggestie...">
   </md-input-container>
-  <button fxFlexAlign="start" color="primary" md-raised-button (click)="adminData.addSuggestion(name.value); name.value = ''">
-    <md-icon>card_giftcard</md-icon> Voeg toe
+  <button fxFlexAlign="start" color="primary" md-raised-button
+          (click)="adminData.addSuggestion(name.value); name.value = ''">
+    <md-icon>card_giftcard</md-icon>
+    Voeg toe
   </button>
 </div>
 
@@ -51,8 +62,10 @@
     <textarea mdInput rows="4" #batchNames
               placeholder="nieuwe batch (aparte regels)..."></textarea>
   </md-input-container>
-  <button fxFlexAlign="start" color="primary" md-raised-button (click)="adminData.addBatchSuggestions(batchNames.value); batchNames.value = ''">
-    <md-icon>cloud_upload</md-icon> Importeer Batch
+  <button fxFlexAlign="start" color="primary" md-raised-button
+          (click)="adminData.addBatchSuggestions(batchNames.value); batchNames.value = ''">
+    <md-icon>cloud_upload</md-icon>
+    Importeer Batch
   </button>
 </div>
 
@@ -62,6 +75,7 @@
               placeholder="Batch Export"></textarea>
   </md-input-container>
   <button fxFlexAlign="start" color="primary" md-raised-button (click)="adminData.exportBatchSuggestions(suggestions)">
-    <md-icon>cloud_download</md-icon> Exporteer Batch
+    <md-icon>cloud_download</md-icon>
+    Exporteer Batch
   </button>
 </div>
