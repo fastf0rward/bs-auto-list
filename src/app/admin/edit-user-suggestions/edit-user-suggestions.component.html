@@ -5,11 +5,11 @@
     <h4 md-line>{{suggestion.name}}</h4>
     <p md-line class="bs-subtle-text">toegevoegd op {{suggestion.dateCreated | date: 'short'}} </p>
 
-    <md-select class="ty-pieces-select" floatPlaceholder="never" placeholder="#" [(ngModel)]="suggestion.pieces" (ngModelChange)="groceryListService.updateProduct(suggestion)">
-      <md-option *ngFor="let option of piecesOptions" [value]="option">{{ option }}x</md-option>
+    <md-select class="ty-product-details ty-pieces-select" floatPlaceholder="never" placeholder="#" [(ngModel)]="suggestion.pieces" (ngModelChange)="adminData.updateSuggestion(suggestion)">
+      <md-option *ngFor="let option of groceryListService.piecesOptions" [value]="option">{{ option }}x</md-option>
     </md-select>
-    <md-select class="ty-quantity-select" floatPlaceholder="never" placeholder="kg" [(ngModel)]="suggestion.quantity" (ngModelChange)="groceryListService.updateProduct(suggestion)">
-      <md-option *ngFor="let option of quantityOptions" [value]="option">{{ option }}</md-option>
+    <md-select class="ty-product-details ty-quantity-select" floatPlaceholder="never" placeholder="kg" [(ngModel)]="suggestion.quantity" (ngModelChange)="adminData.updateSuggestion(suggestion)">
+      <md-option *ngFor="let option of groceryListService.quantityOptions" [value]="option">{{ option }}</md-option>
     </md-select>
 
     <md-icon class="bs-subtle-text" *ngIf="suggestion.status == 'accepted'">done</md-icon>

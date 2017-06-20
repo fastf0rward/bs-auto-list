@@ -105,6 +105,10 @@ export class AdminDataService {
     }
   }
 
+  updateSuggestion(_suggestion) {
+    this.currentSuggestions.update(_suggestion.$key, _suggestion);
+  }
+
   snapshotSuggestionsAndStats() {
     if (!_.isEmpty(this.userSnapshot)) {
       // copy old stats and suggestions to history
@@ -127,6 +131,8 @@ export class AdminDataService {
 
   private resetSuggestion(_suggestion) {
     _suggestion.status = null;
+    _suggestion.pieces = null;
+    _suggestion.quantity = null;
     this.currentSuggestions.update(_suggestion.$key, _suggestion);
   }
 

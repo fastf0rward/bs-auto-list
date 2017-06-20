@@ -15,10 +15,10 @@
       *ngFor="let product of products">
 
       <md-select class="ty-product-details ty-pieces-select" floatPlaceholder="never" placeholder="#" [(ngModel)]="product.pieces" (ngModelChange)="groceryListService.updateProduct(product)">
-        <md-option *ngFor="let option of piecesOptions" [value]="option">{{ option }}x</md-option>
+        <md-option *ngFor="let option of groceryListService.piecesOptions" [value]="option">{{ option }}x</md-option>
       </md-select>
       <md-select class="ty-product-details ty-quantity-select" floatPlaceholder="never" placeholder="kg" [(ngModel)]="product.quantity" (ngModelChange)="groceryListService.updateProduct(product)">
-        <md-option *ngFor="let option of quantityOptions" [value]="option">{{ option }}</md-option>
+        <md-option *ngFor="let option of groceryListService.quantityOptions" [value]="option">{{ option }}</md-option>
       </md-select>
 
       <h4 md-line>{{product.name}}</h4>

@@ -14,8 +14,6 @@ export class GroceryListComponent implements OnInit {
   products: any[];
   suggestions: any[] = [];
   showLoader: boolean;
-  piecesOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  quantityOptions = ['', '50g', '100g', '200g', '300g', '400g', '500g', '750g', '1kg', '2kg'];
 
   constructor(public groceryListService: GroceryListService, private route: ActivatedRoute, private dialog: MdDialog) {
     this.groceryListService.showLoader.subscribe(_show => {

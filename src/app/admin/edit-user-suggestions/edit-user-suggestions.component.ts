@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {AdminDataService} from "../admin-data.service";
+import {GroceryListService} from "../../grocery-list/grocery-list.service";
 
 @Component({
   selector: 'app-edit-user-suggestions',
@@ -12,7 +13,7 @@ export class EditUserSuggestionsComponent implements OnInit {
   suggestions: any[] = [];
   batchExport: string;
 
-  constructor(private route: ActivatedRoute, public adminData: AdminDataService) {
+  constructor(private route: ActivatedRoute, public adminData: AdminDataService, public groceryListService: GroceryListService) {
     this.route.params.subscribe(_params => {
       let _userId = _params['user_id'];
       if (_userId) {

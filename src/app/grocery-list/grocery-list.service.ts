@@ -14,6 +14,8 @@ export class GroceryListService {
   private stats: any;
   private _userIdSubject = new Subject<string>();
   userId = this._userIdSubject.asObservable();
+  piecesOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  quantityOptions = ['', '50g', '100g', '200g', '300g', '400g', '500g', '750g', '1kg', '2kg'];
 
   constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase) {
     this.userId.subscribe(_id => {
