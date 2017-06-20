@@ -1,6 +1,6 @@
 <div>
   <p class="bs-intro-caption">
-    Vink snel en gemakkelijk boodschappen van je lijst.
+    Tick off groceries while shopping.
   </p>
 
   <md-card>
@@ -17,13 +17,13 @@
       </md-list-item>
 
       <md-list-item *ngIf="products.length === 0">
-        Je lijst is nog leeg!
+        Your list is still empty!
       </md-list-item>
 
     </md-list>
   </md-card>
 
   <div fxLayout="row" fxLayoutAlign="center center" class="layout-margin-top">
-    <button md-button md-raised-button color="accent" (click)="goBack()">Naar je lijst</button>
+    <button md-button md-raised-button color="accent" (click)="goBack()">Back to suggestions</button>
   </div>
 </div>

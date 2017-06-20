@@ -5,7 +5,7 @@
 <div fxLayout="column" *ngIf="!showLoader">
 
   <p class="bs-intro-caption">
-    Accepteer suggesties en voeg zelf boodschappen toe.
+    Accept suggestions and add items.
   </p>
 
   <md-list>
@@ -64,7 +64,7 @@
       <md-input-container floatPlaceholder="never">
         <input #newProductName mdInput type="text"
                (keyup.enter)="groceryListService.addProduct(newProductName.value); newProductName.value = ''"
-               placeholder="Voeg iets toe">
+               placeholder="Add an item">
       </md-input-container>
 
     </md-list-item>
@@ -75,12 +75,12 @@
     <button md-button md-raised-button color="primary"
             (click)="groceryListService.addProduct(newProductName.value); newProductName.value = ''"
             [disabled]="newProductName.length > 0">
-      Voeg Toe
+      Add
     </button>
   </div>
 
   <div fxLayout="row" fxLayoutAlign="space-around end" class="layout-margin-top">
-    <button md-button md-raised-button color="accent" routerLink="/shop">Klaar!</button>
+    <button md-button md-raised-button color="accent" routerLink="/shop">Done!</button>
   </div>
 
 </div>
