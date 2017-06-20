@@ -133,6 +133,7 @@ export class AdminDataService {
     _suggestion.status = null;
     _suggestion.pieces = null;
     _suggestion.quantity = null;
+    _suggestion.checked = null;
     this.currentSuggestions.update(_suggestion.$key, _suggestion);
   }
 
