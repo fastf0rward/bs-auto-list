@@ -7,7 +7,8 @@
     <md-list>
 
       <md-list-item *ngFor="let product of products">
-        <md-checkbox [(ngModel)]="product.checked" (click)="checkProduct(product)"><h4 md-line>{{product.name}}</h4>
+        <md-checkbox [(ngModel)]="product.checked" (click)="checkProduct(product)">
+          <span><h4 md-line>{{product.name}} ({{product.pieces}}x {{product.quantity}})</h4></span>
         </md-checkbox>
       </md-list-item>
 
