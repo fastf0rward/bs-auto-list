@@ -13,7 +13,7 @@
     </p>
 
     <div fxLayout="row" fxLayoutAlign="end center" class="bs-grocery-list-actions">
-      <md-select class="bs-product-details bs-pieces-select" floatPlaceholder="never" placeholder="#"
+      <md-select class="bs-product-details bs-pieces-select" floatPlaceholder="never" placeholder="1x"
                  [(ngModel)]="suggestion.pieces" (ngModelChange)="adminData.updateSuggestion(suggestion)">
         <md-option *ngFor="let option of groceryListService.piecesOptions" [value]="option">{{ option }}x</md-option>
       </md-select>

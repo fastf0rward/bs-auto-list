@@ -17,7 +17,7 @@
       <h4 md-line>{{product.name}}</h4>
       <p *ngIf="product.bought" class="bs-product-caption" md-line>{{product.bought}}</p>
 
-      <md-select class="bs-product-details bs-pieces-select" floatPlaceholder="never" placeholder="#"
+      <md-select class="bs-product-details bs-pieces-select" floatPlaceholder="never" placeholder="1x"
                  [(ngModel)]="product.pieces" (ngModelChange)="groceryListService.updateProduct(product)">
         <md-option *ngFor="let option of groceryListService.piecesOptions" [value]="option">{{ option }}x</md-option>
       </md-select>
