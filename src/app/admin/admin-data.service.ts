@@ -47,15 +47,7 @@ export class AdminDataService {
       suggestions: [],
       stats: []
     };
-    const promiseNewUser = this.data.push(newUser);
-    const newUserKey = promiseNewUser.key;
-
-    promiseNewUser.then(() => {
-      let _newUser = this.af.object('/users/' + newUserKey);
-      this.getUserUrl(newUserKey).subscribe(_url => {
-        _newUser.update({url: _url});
-      })
-    });
+    this.data.push(newUser);
   }
 
   updateUser(_user) {
@@ -155,7 +147,7 @@ export class AdminDataService {
     }
   }
 
-  private getUserUrl(_key) {
+  getUserUrl(_key) {
     let userUrl = window.location.host + '/grocery-list/' + _key;
 
     return this.http.get(this.shortifyEndpoint + userUrl)
