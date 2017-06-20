@@ -22,10 +22,7 @@ export class EditUserComponent implements OnInit {
       if (_userId) {
         adminData.setCurrentUser(_userId);
         adminData.currentUser.subscribe(_user => {
-          this.adminData.getUserUrl(_user.$key).subscribe(_url => {
-            _user.url = _url;
-            this.user = _user;
-          });
+          this.user = _user;
         });
         adminData.currentUserSnapshots.subscribe(_snapshots => {
           this.snapshots = _snapshots;

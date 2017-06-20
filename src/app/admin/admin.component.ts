@@ -20,11 +20,6 @@ export class AdminComponent implements OnInit {
         router.navigate(['/admin-auth']);
       } else {
         adminData.data.subscribe((_users) => {
-          _users.forEach(_user => {
-            this.adminData.getUserUrl(_user.$key).subscribe(_url => {
-              _user.url = _url;
-            })
-          });
           this.users = _users;
           this.showLoader = false;
         });
